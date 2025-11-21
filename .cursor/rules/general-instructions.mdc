@@ -1,0 +1,75 @@
+---
+description: General development guidelines for Connativ
+globs: 
+alwaysApply: true
+---
+
+This project is for the CISPA Hackathon (CISPA European Cybersecurity & AI Hackathon Championship)
+
+## Core Philosophy: Fast Prototyping
+
+## Implementation Rules
+
+### Only Implement What's Asked
+- Implement **exactly** what the user requests, nothing more
+- If dependencies are explicitly required, add them; otherwise, skip
+- No speculative features or premature abstractions
+- Code should be production-ready, not prototype-quality
+
+### Propose, Don't Assume
+When identifying useful improvements beyond the explicit request:
+- **DO NOT implement automatically**
+- **Propose** as a numbered plan:
+```
+Proposals:
+(1) Extract ContractAnalyzer logic into base agent class
+    - Purpose: Reusable for all agent types (contract, research, negotiation)
+    - Estimated LOC: ~80 lines
+    - Benefit: DRY principle for future agents
+(2) Add probability calculation caching
+    - Purpose: Reduce API calls for repeated contract analyses
+    - Estimated LOC: ~30 lines
+```
+
+User approves explicitly (e.g., "yes to 1, no to 2") before implementation.
+
+When suggesting code changes or implementations, explain in natural language rather than writing code directly.
+
+### Code Quality Standards
+- **Readable and maintainable**: Clear, self-documenting code
+- **No premature optimization**: Optimize only when there's a proven need
+- **DRY (Don't Repeat Yourself)**: Always check existing code before writing new logic
+- **Smart abstractions**: Create abstractions when they reduce complexity, not for theoretical reuse
+- **Clean interfaces**: Simple, well-encapsulated APIs with minimal parameters
+
+### Documentation & Tests
+- **No new .md documentation files**: Update existing docs only
+- **No automatic test generation**: Tests are added only when requested
+- **Inline comments**: For complex logic that isn't immediately clear
+- **Docstrings**: Required for all public methods and classes (but very concise) - explain purpose and usage
+
+### Service/Utils Pattern
+- **Always search @backend/services/ and @backend/utils/** before creating new utilities
+- Centralize shared logic (API calls, data processing, formatting)
+- Keep services focused: one clear responsibility per service
+- Utilities should be pure functions when possible
+
+## Design for Maintainability
+- Code should be understandable without excessive context
+- Favor explicit over clever solutions
+- Minimize coupling between modules
+- Each component should have a single, clear purpose
+- Think: "Will this make sense to someone reading it in 6 months?"
+
+## Anti-Patterns to Avoid
+- ❌ Duplicating logic across files
+- ❌ Creating abstractions "just in case"
+- ❌ Over-complicated class hierarchies
+- ❌ God classes that do everything
+- ❌ Unclear naming or hidden side effects
+
+---
+
+**Build it right the first time. Clean, modular, and maintainable.**
+
+Before writing any code, always check existing codebase for reusable patterns and shared functionality. Code everything in English. But user inputs/interfaces should be in French.
