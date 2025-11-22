@@ -1,0 +1,800 @@
+=== Job Started at Sat Nov 22 07:42:16 PM CET 2025 ===
+Job ID: 14244878
+Node: jrc0448
+GPU: 0,1,2,3     
+Working directory: /p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples
+=== Loading Modules ===
+=== GPU Check ===
+Sat Nov 22 19:42:18 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.95.05              Driver Version: 580.95.05      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:03:00.0 Off |                    0 |
+| N/A   45C    P0             60W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-40GB          On  |   00000000:44:00.0 Off |                    0 |
+| N/A   45C    P0             64W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA A100-SXM4-40GB          On  |   00000000:84:00.0 Off |                    0 |
+| N/A   45C    P0             59W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA A100-SXM4-40GB          On  |   00000000:C4:00.0 Off |                    0 |
+| N/A   45C    P0             58W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+=== Starting Attack Script ===
+============================================================
+PGD Attack Configuration
+============================================================
+Device: cuda
+GPU: NVIDIA A100-SXM4-40GB
+Ensemble: large (resnet50, densenet121, vgg16_bn)
+Epsilon: 5.0
+Alpha: 0.02
+Steps: 100
+Input Diversity: True
+Input: natural_images.pt
+Output: submission_pgd.npz
+============================================================
+
+=== Loading Dataset ===
+Loaded 100 images
+Image shape: torch.Size([100, 3, 28, 28])
+Labels shape: torch.Size([100])
+
+=== Loading 3 Models ===
+  Loading resnet50... ✓
+  Loading densenet121... ✓
+  Loading vgg16_bn... ✓
+Total models loaded: 3
+
+=== Starting Attack (Processing 100 images) ===
+
+Image   1/100 (ID: 0, True Label: 0):
+    Step   0: Loss=  9.323, L2=0.9699
+    Step  25: Loss= 35.678, L2=4.2405
+    Step  50: Loss= 33.451, L2=4.9742
+    Step  75: Loss= 45.087, L2=4.9724
+  ✓ Completed in 6.97s, Final L2: 4.9733
+
+Image   2/100 (ID: 1, True Label: 4):
+    Step   0: Loss= 10.838, L2=0.9699
+    Step  25: Loss= 29.728, L2=4.6183
+    Step  50: Loss= 28.747, L2=4.9939
+    Step  75: Loss= 33.481, L2=4.9955
+  ✓ Completed in 5.85s, Final L2: 4.9939
+
+Image   3/100 (ID: 2, True Label: 7):
+    Step   0: Loss=  9.506, L2=0.9699
+    Step  25: Loss= 40.419, L2=4.3368
+    Step  50: Loss= 37.525, L2=4.9843
+    Step  75: Loss= 49.370, L2=4.9804
+  ✓ Completed in 5.83s, Final L2: 4.9820
+
+Image   4/100 (ID: 3, True Label: 5):
+    Step   0: Loss=  5.513, L2=0.9699
+    Step  25: Loss= 33.297, L2=4.7087
+    Step  50: Loss= 42.057, L2=4.9923
+    Step  75: Loss= 36.405, L2=4.9945
+  ✓ Completed in 5.84s, Final L2: 4.9953
+
+Image   5/100 (ID: 4, True Label: 5):
+    Step   0: Loss=  7.830, L2=0.9699
+    Step  25: Loss= 20.973, L2=4.3766
+    Step  50: Loss= 29.577, L2=4.9835
+    Step  75: Loss= 31.422, L2=4.9878
+  ✓ Completed in 5.84s, Final L2: 4.9858
+
+Image   6/100 (ID: 5, True Label: 8):
+    Step   0: Loss= 11.017, L2=0.9699
+    Step  25: Loss= 45.336, L2=4.5667
+    Step  50: Loss= 52.813, L2=4.9938
+    Step  75: Loss= 52.931, L2=4.9914
+  ✓ Completed in 5.85s, Final L2: 4.9948
+
+Image   7/100 (ID: 6, True Label: 3):
+    Step   0: Loss= 10.288, L2=0.9699
+    Step  25: Loss= 33.688, L2=4.6286
+    Step  50: Loss= 38.421, L2=4.9955
+    Step  75: Loss= 39.617, L2=4.9964
+  ✓ Completed in 5.84s, Final L2: 4.9947
+
+Image   8/100 (ID: 7, True Label: 3):
+    Step   0: Loss= 10.646, L2=0.9699
+    Step  25: Loss= 36.426, L2=4.9312
+    Step  50: Loss= 38.318, L2=4.9977
+    Step  75: Loss= 47.755, L2=4.9970
+  ✓ Completed in 5.84s, Final L2: 4.9974
+
+Image   9/100 (ID: 8, True Label: 5):
+    Step   0: Loss=  7.848, L2=0.9699
+    Step  25: Loss= 29.563, L2=4.5629
+    Step  50: Loss= 34.095, L2=4.9886
+    Step  75: Loss= 27.545, L2=4.9889
+  ✓ Completed in 5.84s, Final L2: 4.9892
+
+Image  10/100 (ID: 9, True Label: 8):
+    Step   0: Loss= 10.009, L2=0.9699
+    Step  25: Loss= 44.447, L2=4.5485
+    Step  50: Loss= 44.637, L2=4.9943
+    Step  75: Loss= 46.175, L2=4.9941
+  ✓ Completed in 5.84s, Final L2: 4.9960
+
+  Progress: 10/100 (1.1 min elapsed, ~9.5 min remaining)
+
+Image  11/100 (ID: 10, True Label: 5):
+    Step   0: Loss=  6.162, L2=0.9699
+    Step  25: Loss= 23.666, L2=4.8479
+    Step  50: Loss= 32.655, L2=4.9922
+    Step  75: Loss= 33.171, L2=4.9939
+  ✓ Completed in 5.85s, Final L2: 4.9915
+
+Image  12/100 (ID: 11, True Label: 8):
+    Step   0: Loss= 11.045, L2=0.9699
+    Step  25: Loss= 33.188, L2=4.3722
+    Step  50: Loss= 35.773, L2=4.9944
+    Step  75: Loss= 38.482, L2=4.9936
+  ✓ Completed in 5.84s, Final L2: 4.9967
+
+Image  13/100 (ID: 12, True Label: 2):
+    Step   0: Loss= 10.604, L2=0.9699
+    Step  25: Loss= 32.243, L2=4.6645
+    Step  50: Loss= 36.143, L2=4.9982
+    Step  75: Loss= 38.208, L2=4.9992
+  ✓ Completed in 5.84s, Final L2: 4.9982
+
+Image  14/100 (ID: 13, True Label: 1):
+    Step   0: Loss=  7.205, L2=0.9699
+    Step  25: Loss= 34.033, L2=4.0247
+    Step  50: Loss= 40.297, L2=4.9692
+    Step  75: Loss= 38.692, L2=4.9752
+  ✓ Completed in 5.83s, Final L2: 4.9751
+
+Image  15/100 (ID: 14, True Label: 1):
+    Step   0: Loss=  6.438, L2=0.9699
+    Step  25: Loss= 27.826, L2=4.8720
+    Step  50: Loss= 34.711, L2=4.9976
+    Step  75: Loss= 34.624, L2=5.0000
+  ✓ Completed in 5.84s, Final L2: 4.9994
+
+Image  16/100 (ID: 15, True Label: 5):
+    Step   0: Loss=  5.570, L2=0.9699
+    Step  25: Loss= 24.339, L2=4.8033
+    Step  50: Loss= 32.059, L2=4.9947
+    Step  75: Loss= 33.338, L2=4.9949
+  ✓ Completed in 5.84s, Final L2: 4.9952
+
+Image  17/100 (ID: 16, True Label: 4):
+    Step   0: Loss= 10.321, L2=0.9699
+    Step  25: Loss= 39.318, L2=4.6583
+    Step  50: Loss= 51.093, L2=4.9922
+    Step  75: Loss= 61.618, L2=4.9945
+  ✓ Completed in 5.84s, Final L2: 4.9957
+
+Image  18/100 (ID: 17, True Label: 3):
+    Step   0: Loss= 10.454, L2=0.9699
+    Step  25: Loss= 29.185, L2=4.6971
+    Step  50: Loss= 33.131, L2=4.9986
+    Step  75: Loss= 32.371, L2=4.9975
+  ✓ Completed in 5.84s, Final L2: 4.9983
+
+Image  19/100 (ID: 18, True Label: 2):
+    Step   0: Loss=  9.814, L2=0.9699
+    Step  25: Loss= 35.203, L2=4.8036
+    Step  50: Loss= 31.878, L2=4.9969
+    Step  75: Loss= 35.979, L2=4.9964
+  ✓ Completed in 5.84s, Final L2: 4.9977
+
+Image  20/100 (ID: 19, True Label: 8):
+    Step   0: Loss= 10.934, L2=0.9699
+    Step  25: Loss= 30.911, L2=4.3822
+    Step  50: Loss= 28.390, L2=4.9855
+    Step  75: Loss= 38.236, L2=4.9909
+  ✓ Completed in 5.84s, Final L2: 4.9922
+
+  Progress: 20/100 (2.0 min elapsed, ~8.1 min remaining)
+
+Image  21/100 (ID: 20, True Label: 2):
+    Step   0: Loss= 10.035, L2=0.9699
+    Step  25: Loss= 29.584, L2=4.7508
+    Step  50: Loss= 36.100, L2=4.9995
+    Step  75: Loss= 37.811, L2=5.0000
+  ✓ Completed in 5.85s, Final L2: 4.9981
+
+Image  22/100 (ID: 21, True Label: 5):
+    Step   0: Loss=  6.629, L2=0.9699
+    Step  25: Loss= 29.575, L2=4.5768
+    Step  50: Loss= 32.111, L2=4.9914
+    Step  75: Loss= 28.960, L2=4.9913
+  ✓ Completed in 5.84s, Final L2: 4.9944
+
+Image  23/100 (ID: 22, True Label: 8):
+    Step   0: Loss=  9.941, L2=0.9699
+    Step  25: Loss= 29.177, L2=4.6152
+    Step  50: Loss= 33.345, L2=4.9968
+    Step  75: Loss= 30.729, L2=4.9975
+  ✓ Completed in 5.84s, Final L2: 4.9968
+
+Image  24/100 (ID: 23, True Label: 3):
+    Step   0: Loss= 10.293, L2=0.9699
+    Step  25: Loss= 33.123, L2=4.7901
+    Step  50: Loss= 38.905, L2=4.9938
+    Step  75: Loss= 42.401, L2=4.9988
+  ✓ Completed in 5.84s, Final L2: 4.9992
+
+Image  25/100 (ID: 24, True Label: 8):
+    Step   0: Loss= 11.103, L2=0.9696
+    Step  25: Loss= 26.583, L2=4.3086
+    Step  50: Loss= 36.038, L2=4.9948
+    Step  75: Loss= 39.549, L2=4.9958
+  ✓ Completed in 5.84s, Final L2: 4.9943
+
+Image  26/100 (ID: 25, True Label: 5):
+    Step   0: Loss=  5.399, L2=0.9699
+    Step  25: Loss= 27.727, L2=4.9334
+    Step  50: Loss= 31.978, L2=4.9960
+    Step  75: Loss= 32.236, L2=4.9971
+  ✓ Completed in 5.84s, Final L2: 4.9985
+
+Image  27/100 (ID: 26, True Label: 3):
+    Step   0: Loss= 10.005, L2=0.9699
+    Step  25: Loss= 33.295, L2=4.7198
+    Step  50: Loss= 41.687, L2=4.9953
+    Step  75: Loss= 37.652, L2=4.9969
+  ✓ Completed in 5.84s, Final L2: 4.9974
+
+Image  28/100 (ID: 27, True Label: 3):
+    Step   0: Loss= 11.161, L2=0.9699
+    Step  25: Loss= 34.146, L2=4.8785
+    Step  50: Loss= 44.363, L2=4.9975
+    Step  75: Loss= 43.955, L2=4.9975
+  ✓ Completed in 5.84s, Final L2: 4.9985
+
+Image  29/100 (ID: 28, True Label: 1):
+    Step   0: Loss=  8.332, L2=0.9699
+    Step  25: Loss= 24.085, L2=4.9347
+    Step  50: Loss= 31.308, L2=4.9996
+    Step  75: Loss= 33.874, L2=4.9993
+  ✓ Completed in 5.85s, Final L2: 5.0000
+
+Image  30/100 (ID: 29, True Label: 3):
+    Step   0: Loss=  9.056, L2=0.9699
+    Step  25: Loss= 40.065, L2=4.9920
+    Step  50: Loss= 45.355, L2=4.9950
+    Step  75: Loss= 47.744, L2=4.9981
+  ✓ Completed in 5.84s, Final L2: 4.9968
+
+  Progress: 30/100 (3.0 min elapsed, ~7.0 min remaining)
+
+Image  31/100 (ID: 30, True Label: 0):
+    Step   0: Loss=  9.734, L2=0.9699
+    Step  25: Loss= 39.320, L2=4.5293
+    Step  50: Loss= 50.503, L2=4.9805
+    Step  75: Loss= 50.646, L2=4.9830
+  ✓ Completed in 5.85s, Final L2: 4.9765
+
+Image  32/100 (ID: 31, True Label: 1):
+    Step   0: Loss=  8.240, L2=0.9699
+    Step  25: Loss= 28.254, L2=4.7235
+    Step  50: Loss= 33.280, L2=4.9968
+    Step  75: Loss= 30.981, L2=4.9986
+  ✓ Completed in 5.84s, Final L2: 4.9982
+
+Image  33/100 (ID: 32, True Label: 8):
+    Step   0: Loss= 10.039, L2=0.9699
+    Step  25: Loss= 31.685, L2=4.4756
+    Step  50: Loss= 38.270, L2=4.9940
+    Step  75: Loss= 39.922, L2=4.9958
+  ✓ Completed in 5.84s, Final L2: 4.9953
+
+Image  34/100 (ID: 33, True Label: 3):
+    Step   0: Loss= 10.354, L2=0.9699
+    Step  25: Loss= 37.599, L2=4.8971
+    Step  50: Loss= 44.968, L2=4.9966
+    Step  75: Loss= 41.718, L2=4.9986
+  ✓ Completed in 5.84s, Final L2: 4.9967
+
+Image  35/100 (ID: 34, True Label: 0):
+    Step   0: Loss=  9.613, L2=0.9699
+    Step  25: Loss= 27.118, L2=4.2720
+    Step  50: Loss= 36.702, L2=4.9755
+    Step  75: Loss= 41.578, L2=4.9765
+  ✓ Completed in 5.84s, Final L2: 4.9784
+
+Image  36/100 (ID: 35, True Label: 8):
+    Step   0: Loss= 11.355, L2=0.9699
+    Step  25: Loss= 32.152, L2=4.4201
+    Step  50: Loss= 34.885, L2=4.9955
+    Step  75: Loss= 34.634, L2=4.9936
+  ✓ Completed in 5.84s, Final L2: 4.9965
+
+Image  37/100 (ID: 36, True Label: 5):
+    Step   0: Loss=  6.617, L2=0.9699
+    Step  25: Loss= 29.118, L2=4.6273
+    Step  50: Loss= 30.535, L2=4.9918
+    Step  75: Loss= 29.534, L2=4.9922
+  ✓ Completed in 5.85s, Final L2: 4.9904
+
+Image  38/100 (ID: 37, True Label: 4):
+    Step   0: Loss= 10.933, L2=0.9699
+    Step  25: Loss= 33.796, L2=4.4197
+    Step  50: Loss= 40.381, L2=4.9790
+    Step  75: Loss= 40.351, L2=4.9848
+  ✓ Completed in 5.84s, Final L2: 4.9845
+
+Image  39/100 (ID: 38, True Label: 3):
+    Step   0: Loss=  9.292, L2=0.9699
+    Step  25: Loss= 33.917, L2=4.9973
+    Step  50: Loss= 40.090, L2=4.9964
+    Step  75: Loss= 42.411, L2=4.9992
+  ✓ Completed in 5.85s, Final L2: 4.9975
+
+Image  40/100 (ID: 39, True Label: 7):
+    Step   0: Loss= 10.410, L2=0.9699
+    Step  25: Loss= 40.683, L2=4.5137
+    Step  50: Loss= 50.175, L2=4.9919
+    Step  75: Loss= 50.032, L2=4.9918
+  ✓ Completed in 5.85s, Final L2: 4.9959
+
+  Progress: 40/100 (4.0 min elapsed, ~6.0 min remaining)
+
+Image  41/100 (ID: 40, True Label: 1):
+    Step   0: Loss=  6.732, L2=0.9699
+    Step  25: Loss= 25.898, L2=4.8321
+    Step  50: Loss= 28.452, L2=4.9991
+    Step  75: Loss= 30.363, L2=4.9993
+  ✓ Completed in 5.85s, Final L2: 4.9994
+
+Image  42/100 (ID: 41, True Label: 6):
+    Step   0: Loss= 10.801, L2=0.9699
+    Step  25: Loss= 35.465, L2=4.4285
+    Step  50: Loss= 43.308, L2=4.9852
+    Step  75: Loss= 37.095, L2=4.9842
+  ✓ Completed in 5.85s, Final L2: 4.9845
+
+Image  43/100 (ID: 42, True Label: 5):
+    Step   0: Loss=  6.262, L2=0.9699
+    Step  25: Loss= 25.094, L2=4.5775
+    Step  50: Loss= 32.387, L2=4.9950
+    Step  75: Loss= 30.594, L2=4.9956
+  ✓ Completed in 5.84s, Final L2: 4.9954
+
+Image  44/100 (ID: 43, True Label: 6):
+    Step   0: Loss= 10.723, L2=0.9699
+    Step  25: Loss= 33.671, L2=4.6060
+    Step  50: Loss= 36.684, L2=4.9894
+    Step  75: Loss= 32.661, L2=4.9848
+  ✓ Completed in 5.85s, Final L2: 4.9875
+
+Image  45/100 (ID: 44, True Label: 0):
+    Step   0: Loss=  9.880, L2=0.9699
+    Step  25: Loss= 30.722, L2=4.1770
+    Step  50: Loss= 32.733, L2=4.9800
+    Step  75: Loss= 42.769, L2=4.9788
+  ✓ Completed in 5.84s, Final L2: 4.9844
+
+Image  46/100 (ID: 45, True Label: 1):
+    Step   0: Loss=  6.694, L2=0.9699
+    Step  25: Loss= 23.960, L2=4.5970
+    Step  50: Loss= 30.895, L2=4.9988
+    Step  75: Loss= 28.315, L2=4.9988
+  ✓ Completed in 5.85s, Final L2: 5.0000
+
+Image  47/100 (ID: 46, True Label: 2):
+    Step   0: Loss= 10.808, L2=0.9699
+    Step  25: Loss= 30.884, L2=4.6069
+    Step  50: Loss= 33.608, L2=4.9870
+    Step  75: Loss= 34.228, L2=4.9902
+  ✓ Completed in 5.85s, Final L2: 4.9887
+
+Image  48/100 (ID: 47, True Label: 0):
+    Step   0: Loss= 10.463, L2=0.9699
+    Step  25: Loss= 39.046, L2=4.2988
+    Step  50: Loss= 49.066, L2=4.9817
+    Step  75: Loss= 56.419, L2=4.9884
+  ✓ Completed in 5.85s, Final L2: 4.9901
+
+Image  49/100 (ID: 48, True Label: 1):
+    Step   0: Loss=  7.588, L2=0.9699
+    Step  25: Loss= 28.501, L2=5.0000
+    Step  50: Loss= 32.039, L2=5.0000
+    Step  75: Loss= 33.640, L2=5.0000
+  ✓ Completed in 5.85s, Final L2: 5.0000
+
+Image  50/100 (ID: 49, True Label: 0):
+    Step   0: Loss= 10.758, L2=0.9699
+    Step  25: Loss= 34.475, L2=4.3709
+    Step  50: Loss= 47.948, L2=4.9696
+    Step  75: Loss= 51.580, L2=4.9777
+  ✓ Completed in 5.84s, Final L2: 4.9788
+
+  Progress: 50/100 (5.0 min elapsed, ~5.0 min remaining)
+
+Image  51/100 (ID: 50, True Label: 1):
+    Step   0: Loss=  8.898, L2=0.9699
+    Step  25: Loss= 29.536, L2=4.6773
+    Step  50: Loss= 40.732, L2=5.0000
+    Step  75: Loss= 34.654, L2=4.9988
+  ✓ Completed in 5.84s, Final L2: 4.9999
+
+Image  52/100 (ID: 51, True Label: 8):
+    Step   0: Loss= 10.109, L2=0.9699
+    Step  25: Loss= 30.948, L2=4.5873
+    Step  50: Loss= 30.550, L2=4.9996
+    Step  75: Loss= 37.022, L2=4.9994
+  ✓ Completed in 5.84s, Final L2: 4.9987
+
+Image  53/100 (ID: 52, True Label: 4):
+    Step   0: Loss=  9.675, L2=0.9699
+    Step  25: Loss= 37.106, L2=4.6563
+    Step  50: Loss= 39.711, L2=4.9873
+    Step  75: Loss= 43.501, L2=4.9895
+  ✓ Completed in 5.84s, Final L2: 4.9905
+
+Image  54/100 (ID: 53, True Label: 6):
+    Step   0: Loss= 12.054, L2=0.9699
+    Step  25: Loss= 27.848, L2=4.6248
+    Step  50: Loss= 37.418, L2=4.9970
+    Step  75: Loss= 38.992, L2=4.9974
+  ✓ Completed in 5.84s, Final L2: 4.9974
+
+Image  55/100 (ID: 54, True Label: 5):
+    Step   0: Loss=  4.920, L2=0.9699
+    Step  25: Loss= 29.918, L2=4.6697
+    Step  50: Loss= 27.645, L2=4.9886
+    Step  75: Loss= 29.531, L2=4.9923
+  ✓ Completed in 5.84s, Final L2: 4.9937
+
+Image  56/100 (ID: 55, True Label: 1):
+    Step   0: Loss=  8.510, L2=0.9699
+    Step  25: Loss= 30.578, L2=4.9176
+    Step  50: Loss= 34.442, L2=4.9981
+    Step  75: Loss= 35.179, L2=4.9993
+  ✓ Completed in 5.84s, Final L2: 5.0000
+
+Image  57/100 (ID: 56, True Label: 3):
+    Step   0: Loss=  9.685, L2=0.9699
+    Step  25: Loss= 39.364, L2=4.8392
+    Step  50: Loss= 47.068, L2=4.9994
+    Step  75: Loss= 46.571, L2=4.9989
+  ✓ Completed in 5.84s, Final L2: 4.9983
+
+Image  58/100 (ID: 57, True Label: 4):
+    Step   0: Loss= 10.594, L2=0.9699
+    Step  25: Loss= 30.729, L2=4.5113
+    Step  50: Loss= 44.607, L2=4.9891
+    Step  75: Loss= 48.444, L2=4.9907
+  ✓ Completed in 5.84s, Final L2: 4.9924
+
+Image  59/100 (ID: 58, True Label: 0):
+    Step   0: Loss= 11.700, L2=0.9699
+    Step  25: Loss= 42.487, L2=4.4486
+    Step  50: Loss= 49.856, L2=4.9784
+    Step  75: Loss= 47.858, L2=4.9855
+  ✓ Completed in 5.84s, Final L2: 4.9826
+
+Image  60/100 (ID: 59, True Label: 0):
+    Step   0: Loss=  9.260, L2=0.9699
+    Step  25: Loss= 32.475, L2=4.3837
+    Step  50: Loss= 38.643, L2=4.9805
+    Step  75: Loss= 42.832, L2=4.9837
+  ✓ Completed in 5.84s, Final L2: 4.9820
+
+  Progress: 60/100 (5.9 min elapsed, ~4.0 min remaining)
+
+Image  61/100 (ID: 60, True Label: 6):
+    Step   0: Loss= 11.215, L2=0.9699
+    Step  25: Loss= 50.619, L2=4.6686
+    Step  50: Loss= 51.806, L2=4.9868
+    Step  75: Loss= 56.134, L2=4.9827
+  ✓ Completed in 5.84s, Final L2: 4.9871
+
+Image  62/100 (ID: 61, True Label: 7):
+    Step   0: Loss=  9.015, L2=0.9699
+    Step  25: Loss= 31.621, L2=4.6704
+    Step  50: Loss= 30.927, L2=4.9855
+    Step  75: Loss= 36.167, L2=4.9913
+  ✓ Completed in 5.84s, Final L2: 4.9941
+
+Image  63/100 (ID: 62, True Label: 1):
+    Step   0: Loss=  7.885, L2=0.9699
+    Step  25: Loss= 27.716, L2=4.5474
+    Step  50: Loss= 37.796, L2=4.9965
+    Step  75: Loss= 39.409, L2=4.9991
+  ✓ Completed in 5.84s, Final L2: 4.9963
+
+Image  64/100 (ID: 63, True Label: 5):
+    Step   0: Loss=  6.137, L2=0.9699
+    Step  25: Loss= 30.084, L2=4.6653
+    Step  50: Loss= 33.241, L2=4.9950
+    Step  75: Loss= 38.482, L2=4.9944
+  ✓ Completed in 5.84s, Final L2: 4.9962
+
+Image  65/100 (ID: 64, True Label: 6):
+    Step   0: Loss= 10.516, L2=0.9699
+    Step  25: Loss= 34.967, L2=4.4319
+    Step  50: Loss= 52.506, L2=4.9886
+    Step  75: Loss= 55.446, L2=4.9926
+  ✓ Completed in 5.84s, Final L2: 4.9926
+
+Image  66/100 (ID: 65, True Label: 6):
+    Step   0: Loss=  9.604, L2=0.9699
+    Step  25: Loss= 46.065, L2=4.5437
+    Step  50: Loss= 55.519, L2=4.9774
+    Step  75: Loss= 57.924, L2=4.9797
+  ✓ Completed in 5.84s, Final L2: 4.9818
+
+Image  67/100 (ID: 66, True Label: 5):
+    Step   0: Loss=  5.671, L2=0.9699
+    Step  25: Loss= 29.985, L2=4.7326
+    Step  50: Loss= 35.037, L2=4.9900
+    Step  75: Loss= 36.086, L2=4.9928
+  ✓ Completed in 5.84s, Final L2: 4.9915
+
+Image  68/100 (ID: 67, True Label: 8):
+    Step   0: Loss= 11.198, L2=0.9699
+    Step  25: Loss= 32.666, L2=4.5875
+    Step  50: Loss= 38.588, L2=4.9966
+    Step  75: Loss= 39.225, L2=4.9995
+  ✓ Completed in 5.84s, Final L2: 4.9990
+
+Image  69/100 (ID: 68, True Label: 0):
+    Step   0: Loss= 10.899, L2=0.9699
+    Step  25: Loss= 48.141, L2=4.2492
+    Step  50: Loss= 51.981, L2=4.9787
+    Step  75: Loss= 58.801, L2=4.9799
+  ✓ Completed in 5.84s, Final L2: 4.9805
+
+Image  70/100 (ID: 69, True Label: 2):
+    Step   0: Loss= 10.039, L2=0.9699
+    Step  25: Loss= 23.455, L2=4.8328
+    Step  50: Loss= 31.340, L2=4.9939
+    Step  75: Loss= 30.129, L2=4.9897
+  ✓ Completed in 5.83s, Final L2: 4.9930
+
+  Progress: 70/100 (6.9 min elapsed, ~3.0 min remaining)
+
+Image  71/100 (ID: 70, True Label: 1):
+    Step   0: Loss=  7.949, L2=0.9699
+    Step  25: Loss= 27.284, L2=4.8569
+    Step  50: Loss= 35.713, L2=4.9997
+    Step  75: Loss= 34.996, L2=4.9994
+  ✓ Completed in 5.84s, Final L2: 4.9989
+
+Image  72/100 (ID: 71, True Label: 3):
+    Step   0: Loss=  9.976, L2=0.9699
+    Step  25: Loss= 33.498, L2=4.8769
+    Step  50: Loss= 45.808, L2=4.9917
+    Step  75: Loss= 39.088, L2=4.9932
+  ✓ Completed in 5.84s, Final L2: 4.9927
+
+Image  73/100 (ID: 72, True Label: 3):
+    Step   0: Loss= 11.372, L2=0.9699
+    Step  25: Loss= 42.701, L2=4.9195
+    Step  50: Loss= 40.536, L2=4.9964
+    Step  75: Loss= 50.147, L2=4.9980
+  ✓ Completed in 5.84s, Final L2: 4.9989
+
+Image  74/100 (ID: 73, True Label: 3):
+    Step   0: Loss=  9.906, L2=0.9699
+    Step  25: Loss= 38.006, L2=4.9646
+    Step  50: Loss= 43.951, L2=4.9981
+    Step  75: Loss= 40.859, L2=4.9987
+  ✓ Completed in 5.84s, Final L2: 4.9967
+
+Image  75/100 (ID: 74, True Label: 8):
+    Step   0: Loss= 12.708, L2=0.9699
+    Step  25: Loss= 47.584, L2=4.4945
+    Step  50: Loss= 58.382, L2=4.9926
+    Step  75: Loss= 57.366, L2=4.9956
+  ✓ Completed in 5.84s, Final L2: 4.9942
+
+Image  76/100 (ID: 75, True Label: 7):
+    Step   0: Loss=  9.983, L2=0.9699
+    Step  25: Loss= 29.596, L2=4.6278
+    Step  50: Loss= 32.859, L2=4.9955
+    Step  75: Loss= 30.227, L2=4.9931
+  ✓ Completed in 5.83s, Final L2: 4.9935
+
+Image  77/100 (ID: 76, True Label: 5):
+    Step   0: Loss=  6.445, L2=0.9699
+    Step  25: Loss= 31.343, L2=4.5375
+    Step  50: Loss= 36.915, L2=4.9935
+    Step  75: Loss= 40.628, L2=4.9909
+  ✓ Completed in 5.84s, Final L2: 4.9950
+
+Image  78/100 (ID: 77, True Label: 8):
+    Step   0: Loss= 10.947, L2=0.9699
+    Step  25: Loss= 31.195, L2=4.4844
+    Step  50: Loss= 34.817, L2=4.9946
+    Step  75: Loss= 37.965, L2=4.9947
+  ✓ Completed in 5.84s, Final L2: 4.9974
+
+Image  79/100 (ID: 78, True Label: 0):
+    Step   0: Loss=  9.703, L2=0.9699
+    Step  25: Loss= 39.178, L2=4.2991
+    Step  50: Loss= 46.368, L2=4.9810
+    Step  75: Loss= 39.874, L2=4.9784
+  ✓ Completed in 5.84s, Final L2: 4.9855
+
+Image  80/100 (ID: 79, True Label: 4):
+    Step   0: Loss=  8.805, L2=0.9699
+    Step  25: Loss= 38.075, L2=4.6364
+    Step  50: Loss= 46.344, L2=4.9966
+    Step  75: Loss= 49.162, L2=4.9965
+  ✓ Completed in 5.84s, Final L2: 4.9970
+
+  Progress: 80/100 (7.9 min elapsed, ~2.0 min remaining)
+
+Image  81/100 (ID: 80, True Label: 5):
+    Step   0: Loss=  8.496, L2=0.9699
+    Step  25: Loss= 26.272, L2=4.0636
+    Step  50: Loss= 31.241, L2=4.9836
+    Step  75: Loss= 35.218, L2=4.9840
+  ✓ Completed in 5.84s, Final L2: 4.9818
+
+Image  82/100 (ID: 81, True Label: 4):
+    Step   0: Loss= 11.096, L2=0.9699
+    Step  25: Loss= 38.952, L2=4.4008
+    Step  50: Loss= 42.491, L2=4.9802
+    Step  75: Loss= 33.951, L2=4.9840
+  ✓ Completed in 5.84s, Final L2: 4.9785
+
+Image  83/100 (ID: 82, True Label: 0):
+    Step   0: Loss= 10.689, L2=0.9699
+    Step  25: Loss= 31.085, L2=4.3519
+    Step  50: Loss= 40.780, L2=4.9869
+    Step  75: Loss= 37.210, L2=4.9867
+  ✓ Completed in 5.84s, Final L2: 4.9877
+
+Image  84/100 (ID: 83, True Label: 0):
+    Step   0: Loss=  9.804, L2=0.9699
+    Step  25: Loss= 40.587, L2=4.5135
+    Step  50: Loss= 52.014, L2=4.9809
+    Step  75: Loss= 47.963, L2=4.9784
+  ✓ Completed in 5.84s, Final L2: 4.9863
+
+Image  85/100 (ID: 84, True Label: 5):
+    Step   0: Loss=  8.381, L2=0.9698
+    Step  25: Loss= 27.795, L2=4.2978
+    Step  50: Loss= 25.823, L2=4.9821
+    Step  75: Loss= 27.583, L2=4.9884
+  ✓ Completed in 5.84s, Final L2: 4.9814
+
+Image  86/100 (ID: 85, True Label: 8):
+    Step   0: Loss= 10.055, L2=0.9699
+    Step  25: Loss= 37.044, L2=4.4613
+    Step  50: Loss= 42.744, L2=4.9935
+    Step  75: Loss= 49.469, L2=4.9931
+  ✓ Completed in 5.84s, Final L2: 4.9929
+
+Image  87/100 (ID: 86, True Label: 5):
+    Step   0: Loss=  5.844, L2=0.9699
+    Step  25: Loss= 41.975, L2=4.6821
+    Step  50: Loss= 47.395, L2=4.9939
+    Step  75: Loss= 48.233, L2=4.9925
+  ✓ Completed in 5.84s, Final L2: 4.9950
+
+Image  88/100 (ID: 87, True Label: 3):
+    Step   0: Loss=  9.823, L2=0.9699
+    Step  25: Loss= 38.504, L2=4.9325
+    Step  50: Loss= 38.587, L2=4.9983
+    Step  75: Loss= 45.486, L2=4.9997
+  ✓ Completed in 5.84s, Final L2: 4.9992
+
+Image  89/100 (ID: 88, True Label: 7):
+    Step   0: Loss=  9.709, L2=0.9699
+    Step  25: Loss= 25.848, L2=4.4970
+    Step  50: Loss= 29.145, L2=4.9904
+    Step  75: Loss= 36.789, L2=4.9882
+  ✓ Completed in 5.84s, Final L2: 4.9921
+
+Image  90/100 (ID: 89, True Label: 0):
+    Step   0: Loss=  8.579, L2=0.9699
+    Step  25: Loss= 28.991, L2=4.4250
+    Step  50: Loss= 41.036, L2=4.9785
+    Step  75: Loss= 43.323, L2=4.9793
+  ✓ Completed in 5.84s, Final L2: 4.9805
+
+  Progress: 90/100 (8.8 min elapsed, ~1.0 min remaining)
+
+Image  91/100 (ID: 90, True Label: 3):
+    Step   0: Loss= 10.083, L2=0.9699
+    Step  25: Loss= 34.522, L2=4.6515
+    Step  50: Loss= 32.737, L2=4.9965
+    Step  75: Loss= 38.062, L2=4.9983
+  ✓ Completed in 5.84s, Final L2: 4.9991
+
+Image  92/100 (ID: 91, True Label: 6):
+    Step   0: Loss= 12.092, L2=0.9699
+    Step  25: Loss= 34.815, L2=4.5871
+    Step  50: Loss= 29.527, L2=4.9955
+    Step  75: Loss= 38.124, L2=4.9981
+  ✓ Completed in 5.84s, Final L2: 4.9990
+
+Image  93/100 (ID: 92, True Label: 4):
+    Step   0: Loss= 10.102, L2=0.9699
+    Step  25: Loss= 31.517, L2=4.6159
+    Step  50: Loss= 41.626, L2=4.9902
+    Step  75: Loss= 38.224, L2=4.9921
+  ✓ Completed in 5.85s, Final L2: 4.9968
+
+Image  94/100 (ID: 93, True Label: 3):
+    Step   0: Loss=  9.780, L2=0.9699
+    Step  25: Loss= 34.567, L2=4.9644
+    Step  50: Loss= 45.611, L2=4.9978
+    Step  75: Loss= 40.632, L2=4.9984
+  ✓ Completed in 5.84s, Final L2: 4.9974
+
+Image  95/100 (ID: 94, True Label: 3):
+    Step   0: Loss=  9.669, L2=0.9699
+    Step  25: Loss= 41.402, L2=4.9993
+    Step  50: Loss= 43.282, L2=4.9992
+    Step  75: Loss= 41.940, L2=5.0000
+  ✓ Completed in 5.84s, Final L2: 4.9995
+
+Image  96/100 (ID: 95, True Label: 1):
+    Step   0: Loss=  7.040, L2=0.9699
+    Step  25: Loss= 29.285, L2=4.9383
+    Step  50: Loss= 32.873, L2=4.9990
+    Step  75: Loss= 35.175, L2=4.9995
+  ✓ Completed in 5.84s, Final L2: 4.9995
+
+Image  97/100 (ID: 96, True Label: 4):
+    Step   0: Loss= 12.061, L2=0.9699
+    Step  25: Loss= 25.915, L2=4.4085
+    Step  50: Loss= 35.718, L2=4.9824
+    Step  75: Loss= 37.529, L2=4.9847
+  ✓ Completed in 5.84s, Final L2: 4.9853
+
+Image  98/100 (ID: 97, True Label: 5):
+    Step   0: Loss=  7.442, L2=0.9699
+    Step  25: Loss= 31.201, L2=4.5514
+    Step  50: Loss= 36.032, L2=4.9975
+    Step  75: Loss= 40.969, L2=4.9957
+  ✓ Completed in 5.84s, Final L2: 4.9977
+
+Image  99/100 (ID: 98, True Label: 3):
+    Step   0: Loss= 11.021, L2=0.9699
+    Step  25: Loss= 31.745, L2=4.5939
+    Step  50: Loss= 37.004, L2=4.9965
+    Step  75: Loss= 35.208, L2=4.9997
+  ✓ Completed in 5.84s, Final L2: 4.9987
+
+Image 100/100 (ID: 99, True Label: 8):
+    Step   0: Loss= 10.358, L2=0.9699
+    Step  25: Loss= 26.214, L2=4.4755
+    Step  50: Loss= 30.171, L2=4.9884
+    Step  75: Loss= 36.326, L2=4.9903
+  ✓ Completed in 5.84s, Final L2: 4.9941
+
+  Progress: 100/100 (9.8 min elapsed, ~0.0 min remaining)
+
+=== Combining Results ===
+
+=== Final Statistics ===
+Average L2 Distance: 4.9927
+Min L2 Distance:    4.9733
+Max L2 Distance:    5.0000
+Std L2 Distance:    0.0067
+
+=== Saving Submission ===
+✓ Saved to submission_pgd.npz
+
+=== Total Time: 9.82 minutes ===
+=== Job Finished at Sat Nov 22 07:52:16 PM CET 2025 ===
