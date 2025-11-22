@@ -105,7 +105,7 @@ Let `G` be the ground-truth tensor loaded:
 """
 
 BASE_URL  = "http://34.122.51.94:80"
-API_KEY  = "YOUR_API_KEY_HERE"  
+API_KEY  = "f62b1499d4e2bf13ae56be5683c974c1"  
 
 TASK_ID = "10-adversarial-examples"
 

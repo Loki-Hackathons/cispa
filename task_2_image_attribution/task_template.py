@@ -21,7 +21,7 @@ LABELS = ["RAR", "Taming", "VAR", "SD", "outlier"] # Donot change this
 
 # Leaderboard submission
 SERVER_URL = "http://34.122.51.94:80"
-API_KEY = None  # teams insert their assigned token here
+API_KEY = "f62b1499d4e2bf13ae56be5683c974c1"  # teams insert their assigned token here
 TASK_ID = "05-iar-attribution"
 
 # ----------------------------

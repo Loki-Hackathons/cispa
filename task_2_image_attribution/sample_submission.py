@@ -59,7 +59,7 @@ import sys
 import requests
 
 BASE_URL  = "http://34.122.51.94:9000"
-API_KEY   = "Your-API-Key-Here"  # replace with your actual API key
+API_KEY   = "f62b1499d4e2bf13ae56be5683c974c1"  # replace with your actual API key
 
 TASK_ID   = "05-iar-attribution"
 FILE_PATH = "Your-Submission-File.csv"  # replace with your actual file path
