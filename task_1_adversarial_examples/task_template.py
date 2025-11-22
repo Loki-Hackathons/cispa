@@ -111,14 +111,14 @@ TASK_ID = "10-adversarial-examples"
 
 # Path to the .npz file containing the images you want to get logits for
 
-QUERY_PATH = "PATH/TO/YOUR/QUERY_FILE.npz"
+QUERY_PATH = "submission_pgd.npz"
 
 # Path to the .npz file you want to send
 
-FILE_PATH = "PATH/TO/YOUR/SUBMISSION.npz"
+FILE_PATH = "submission_pgd.npz"
 
 GET_LOGITS = False      # set True to get logits from the API
-SUBMIT     = False      # set True to submit your solution
+SUBMIT     = True       # set True to submit your solution
 
 def die(msg):
     print(f"{msg}", file=sys.stderr)

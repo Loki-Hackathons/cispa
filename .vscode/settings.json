@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "task_1_adversarial_examples/.venv/bin/python",
+    "python.analysis.extraPaths": [
+        "task_1_adversarial_examples"
+    ]
+}

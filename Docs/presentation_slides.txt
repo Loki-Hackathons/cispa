@@ -1,0 +1,775 @@
+CISPA European AI &
+Cybersecurity Championship
+Adam Dziedzic and Franziska Boenisch
+nd
+Introduction on November 22 , 2025
+
+SprintML
+
+Who are we? Franziska & Adam
+Google, Microsoft
+Barclays, DTU,
+EPFL, CERN, WUT
+Universities of
+Chicago & Toronto,
+Vector, CISPA
+
+University of Toronto,
+Vector, CISPA, FU Berlin
+AbiBac: Berlin & Lyon,
+Fraunhofer AISEC,
+TU Eindhoven, Chung Cheng
+University in Taiwan
+2
+
+The Technical CISPA Team at the Hackathon
+
+Aditya
+Kumar
+
+Lorenzo
+Rossi
+
+Michel
+Meintz
+
+Bartłomiej
+Marek
+
+Bihe
+Zhao
+
+Vincent
+Hanke
+
+Ivo
+Hoese
+
+Maitri
+Shah
+
+Nima
+Dindarsafa
+
+Louis
+Kerner
+
+Research about Security & Machine Learning
+Located in Saarbrücken (<2h from Paris/Frankfurt)
+International community with > 600 employees
+from 52 different nations
+> 40 Faculty Members and their research groups
+4
+
+What makes us proud at CISPA?
+
+https://csrankings.org/#/fromyear/2014/toyear/2024/index?sec&world
+
+5
+
+Tasks from Our SprintML Group at CISPA
+S - ecure
+P - rivate
+R - obust
+In - terpretable
+T – rustworthy
+Machine Learning
+~20 members (PhDs, Postdocs,
+Research Interns, Students)
+8 different nations
+Visit: sprintml.com
+6
+
+European Championship
+First Regional Round in Paris
+November 22-23, 2025
+
+Awards
+The top 3 teams advance to the grand
+finale at CISPA in July next year.
+We sponsor the travel to the finale.
+
+Prizes for the Grand Finale:
+1st place: €4,000
+2nd place: €2,000
+3rd place: €1,200
+Runner-ups: €400
+
+8
+
+Plan for Our 24-hour Hackathon in Paris
+Saturday:
+11:00 – Participant registration and snacks provided
+12:00 – Opening plenary and information
+12:30 – Hackathon begins
+17:00 – Dinner delivered
+Sunday:
+08:00 – Breakfast delivered
+12:30 – Hackathon ends & Lunch delivered
+13:30 – Presentation of the tasks
+14:30 – Assessment meeting to determine winners
+15:00 – Announcement of results (award ceremony)
+
+9
+
+Communication via Discord
+Join: https://discord.gg/PDzPcaZPr8
+
+10
+
+Teams
+Only the teams that have the label
+multi were assigned an API key.
+We would like the participants with
+the label single to form a full team.
+
+11
+
+Teams: Where to go?
+
+12
+
+If you don’t want to
+be on the photos:
+request a different
+badge from Julian
+
+13
+
+Leaderboard: Ranking of All the Teams
+
+14
+
+Task 1: Adversarial Examples
+
+Machine Learning (ML) models are powerful…
+
+Pomeranian
+
+16
+
+… but they are easily fooled!
+
+Panda?
+Gibbon!
+
+Goodfellow et al., ICLR’15
+
+Panda!
+
+17
+
+Misclassification through targeted perturbations
+
+=
+Adversarial Example
+Gibbon
+97.7% Confidence
+Goodfellow et al., ICLR’15
+
++
+Carefully
+Crafted Noise
+
+Original Image
+Panda
+57.7% Confidence
+18
+
+Your TASK1: Find Adversarial Examples
+query
+
+logits
+
+You are the attacker! 100 benign images 𝑥
+We provide you with a model.
+Your goal: Get the model to mis-predict!
+Evaluation: Get the lowest score.
+Score: σ100
+0 𝑠𝑖 where 𝑠𝑖 = 1, if the model still correctly classifies the sample
+and 𝑠𝑖 = ||𝑥 𝑜𝑟𝑖𝑔 − 𝑥 𝑦𝑜𝑢𝑟𝑠 ||2 normalized L2-distance otherwise
+19
+
+Task 2: Image Attribution
+
+Generative Artificial Intelligence (GenAI)
+OpenAI
+
+stability.ai
+
+SUNO
+
+21
+
+GenAI Trained on a Vast Amount of Data
+DATA
+
+Train
+
+22
+
+GenAI Inputs and Outputs Form Data Loops
+
+Train
+
+Generate
+
+23
+
+Data Loops: Misinformation & Degeneration
+
+Train
+
+Generate
+
+Collapse
+
+24
+
+Identify Training Data and Generated Outputs
+
+EU
+AI Act
+
+Train
+
+Generate
+
+2nd
+August
+2026
+
+25
+
+AutoRegressive Models (ARs) for Language
+An example of text generation: Predict the next token based on all the previous tokens.
+
+She ate an _______
+She
+
+ate
+
+an
+
+?
+
+26
+
+AutoRegressive Models (ARs) for Language
+An example of text generation: Predict the next token based on all the previous tokens.
+
+She ate an apple
+She
+
+ate
+
+an
+
+apple
+
+𝑡=𝑇
+
+𝑝 𝑥1 , 𝑥2 , … , 𝒙𝑻 = ෑ 𝑝 𝒙𝑻 𝑥1 , 𝑥2 , … , 𝑥𝑇−1 ) , 𝒙𝑻 ∈ 𝑉
+𝑡=1
+27
+
+AutoRegressive Models (ARs) for Language
+𝑡=𝑇
+
+𝑝 𝑥1 , 𝑥2 , … , 𝒙𝑻 = ෑ 𝑝 𝒙𝑻 𝑥1 , 𝑥2 , … , 𝑥𝑇−1 ) , 𝒙𝑻 ∈ 𝑉
+𝑡=1
+
+Main advantages of autoregressive models for
+language:
+1. Scaling laws: the models’ performance scales well with
+increased model size, data, and computation.
+2. Zero-shot generalization: the models perform well on
+tasks that they were not trained on (e.g., classification tasks
+without using a super-vised fine-tuning).
+28
+
+Vision Autoregressive Models (VARs)
+
+[Tian et al. NeurIPS’24]
+
+Predict the next scale (or resolution) with many tokens per scale: coarse to fine scale.
+
+29
+
+VAR involves two training steps
+
+Stage1: train a multi-scale Vector
+Quantized (VQ) autoencoder.
+This encodes an initial image into K
+token maps 𝑅 = 𝑟1 , 𝑟2 , … , 𝑟𝐾 , shown in
+the middle of the picture above.
+
+30
+
+VAR involves two training steps
+
+Stage1: train a multi-scale Vector
+Quantized (VQ) autoencoder.
+This encodes an initial image into K
+token maps 𝑅 = 𝑟1 , 𝑟2 , … , 𝑟𝐾 , shown in
+the middle of the picture above.
+
+Stage2: a VAR transformer is trained via
+the next-scale prediction. It takes
+𝑠 , 𝑟1 , 𝑟2 , … , 𝑟𝐾−1 as input and predicts
+the 𝑟𝐾 , where 𝑠 is a start token with
+condition information (e.g., image class).
+
+31
+
+Stage 1: Train Multi-Scale VQ-VAE on Images
+Stage1: train a multi-scale Vector Quantized (VQ) variational autoencoder to encode
+an initial image into K token maps 𝑅 = 𝑟1 , 𝑟2 , … , 𝑟𝐾 and then reconstruct the image.
+
+32 x 16 x 16
+
+3 x 256 x 256
+
+Encode
+(Conv)
+Initial image
+
+Latent
+Encode
+𝑓 – feature
+map
+
+32
+
+Stage 1: Train Multi-Scale VQ-VAE on Images
+Stage1: train a multi-scale Vector Quantized (VQ) variational autoencoder to encode
+an initial image into K token maps 𝑅 = 𝑟1 , 𝑟2 , … , 𝑟𝐾 and then reconstruct the image.
+
+32 x 16 x 16
+
+3 x 256 x 256
+
+Encode
+(Conv)
+Initial image
+
+Latent
+Encode
+
+Tokens
+
+𝑓 – feature
+map
+32 float values
+
+4096 entries in
+the codebook
+(vocabulary size)
+
+32 float values
+…
+32 float values
+
+33
+
+Stage 1: Train Multi-Scale VQ-VAE on Images
+Stage1: train a multi-scale Vector Quantized (VQ) variational autoencoder to encode
+an initial image into K token maps 𝑅 = 𝑟1 , 𝑟2 , … , 𝑟𝐾 and then reconstruct the image.
+32 x 16 x 16
+
+3 x 256 x 256
+
+Encode
+(Conv)
+Initial image
+
+Latent
+Encode
+𝑓 – feature
+map
+
+4096 entries in
+the codebook
+(vocabulary size)
+
+Tokens
+
+3 x 256 x 256
+Latent
+Decode
+
+Decode
+(Conv)
+
+𝑓መ –
+reconstructed
+feature
+32 float values
+map
+32 float values
+
+Output Image
+
+…
+32 float values
+
+34
+
+VAR involves two training steps
+
+Stage1: train a multi-scale Vector
+Quantized (VQ) autoencoder.
+This encodes an initial image into K
+token maps 𝑅 = 𝑟1 , 𝑟2 , … , 𝑟𝐾 , shown in
+the middle of the picture above.
+
+Stage2: a VAR transformer is trained via
+the next-scale prediction. It takes
+𝑠 , 𝑟1 , 𝑟2 , … , 𝑟𝐾−1 as input and predicts
+the 𝑟𝐾 , where 𝑠 is a start token with
+condition information (e.g., image class).
+
+35
+
+Stage 2: Train VAR Transformer on Tokens
+Expected:
+
+𝑟1
+
+Predicted:
+
+𝑟1Ƹ
+
+Cross-Entropy
+
+VAR Transformer
+S
+Start Token
+36
+
+Stage 2: Train VAR Transformer on Tokens
+Expected:
+
+𝑟1
+
+𝑟2 = [𝑡1 , 𝑡2 , 𝑡3 , 𝑡4 ]
+
+Predicted:
+
+𝑟1Ƹ
+
+𝑟2Ƹ = [𝑡1 , 𝑡2 , 𝑡3 , 𝑡4 ]
+
+Cross-Entropy
+
+VAR Transformer
+S
+
+𝑟1
+
+Start Token
+37
+
+VAR involves two training steps
+
+Stage1: train a multi-scale Vector
+Quantized (VQ) autoencoder.
+This encodes an initial image into K
+token maps 𝑅 = 𝑟1 , 𝑟2 , … , 𝑟𝐾 , shown in
+the middle of the picture above.
+
+38
+
+Your TASK2: Training Data Attribution
+
+Model 1: VAR
+
+Model 2: RAR
+
+?
+The internet is full of generated data.
+
+Model 3: Stable Diffusion
+
+39
+
+Your TASK2: Training Data Attribution
+
+Model 1: VAR
+
+Model 2: RAR
+
+We give you 10,500 images.
+Generated by VAR, RAR, SD, Taming
+and OOD (e.g. natural images)
+Your goal: correctly identify the source of
+each image!
+The score: average over per-class FPRs and
+TPRs.
+
+Model 3: Stable Diffusion (SD)
+
+40
+
+Your TASK2: Training Data Attribution
+TRP (True Positive Rate): Measures how effectively model
+recognizes images from each model.
+FPR (False Positive Rate): Measures when you incorrectly
+label another image to a given model.
+For each of the 4 models, we compute:
+Final Score = TPR/ (1 + (W*FPR)), with weight W=5
+Then, we average over all 4.
+41
+
+Task 3: Watermark Detection
+
+Question: Is an image generated or not?
+Detector
+
+Hard to
+predict!
+
+43
+
+Question: Is an image generated or not?
+
+Watermark
+
+Detector
+
+Hard to
+predict!
+
+Detector
+
+Generated
+44
+
+Vision Autoregressive Models (VARs)
+
+[Tian et al. NeurIPS’24]
+
+Predict the next scale (or resolution) with many tokens per scale: coarse to fine scale.
+
+45
+
+Infinity: State-of-the-Art Image Generation
+[Han et al. CVPR’25]
+
+𝑟3
+𝑟2
+𝑟1
+
+46
+
+BitMark for Bit-Wise Image Generation
+𝑟3
+𝑟2
+𝑟1
+
+1
+
+47
+
+Embedding BitMark during Generation
+1
+
+?
+
+Red List R: {01,10}
+Green List G: {11,00}
+exp(𝑙1 )
+𝑝1 =
+exp 𝑙1 + exp 𝑙0
+exp(𝑙0 )
+𝑝0 =
+exp 𝑙0 + exp 𝑙1
+48
+
+Embedding BitMark during Generation
+1
+
+1
+
+Red List R: {01,10}
+Green List G: {11,00}
+exp(𝑙1 + 𝜹)
+𝑝1 =
+exp 𝑙1 + 𝜹 + exp 𝑙0
+exp(𝑙0 )
+𝑝0 =
+exp 𝑙0 + exp 𝑙1 + 𝜹
+49
+
+Detecting BitMark Watermarked Images
+1
+1
+
+1
+1
+
+ℋ0 : The sequence of bits is generated with no knowledge about
+the green and red lists.
+𝛾𝑇 green bit sequences
+
+(1 − 𝛾)𝑇 red bit sequences
+
+𝑧 = (𝐶 − 𝛾𝑇)/ 𝑇𝛾(1 − 𝛾)
+
+50
+
+Your TASK3: Detect Watermarked Images
+s1
+s2
+s3
+
+For each image, you return a continuous
+score s between 0 (certainly no watermark)
+and 1 (certainly watermarked): score s ∈ [0,1]
+score ≥ 0.5 – watermarked image
+score < 0.5 – non-watermarked image (clean)
+
+We give you images.
+51
+
+Metric for TASK3: Watermarked Images
+s1
+s2
+s3
+You provide the scores.
+
+Metric: True Positive Rate (TRP) at 1%
+False Positive Rate
+→ The higher TPR the better
+A high TPR means the detector correctly
+identifies many watermarked images.
+The FPR is fixed at 1%, meaning that only
+1% of clean images are allowed to be
+falsely scored as watermarked
+(score ≥ 0.5).
+52
+
+Compute Infrastructure
+
+Compute from Jülich Research Center
+Compute Infrastructure:
+1. 40 compute nodes (1 compute node reserved per your job).
+2. Each compute node with:
+
+a) 4× NVIDIA A100 GPU, 4× 40 GB HBM2e
+b) 2× AMD EPYC 7742, 2× 64 cores, 2.25 GHz
+c) 512 (16× 32) GB DDR4, 3200 MHz
+
+3. 12 login nodes for the initial access and coding.
+a) 2× NVIDIA Quadro RTX8000 GPU
+b) 2× AMD EPYC 7742, 2× 64 cores, 2.25 GHz
+c) 1024 (16× 64) GB DDR4, 3200 MHz
+
+54
+
+Register at: judoor.fz-juelich.de/login
+
+Click here!
+
+55
+
+Enable the Multi-Factor Authentication (MFA)
+
+Click here!
+
+56
+
+Sign the User Agreement
+
+57
+
+Manage SSH-Keys to access the GPUs
+Use/create SSH keys: ssh-keygen -t ed25519 -C "your_email"
+
+Use SSH keys:
+
+Generate SSH keys:
+
+58
+
+copy
+
+Add the ssh key here:
+cat id_ed25519.pub or
+ssh-keygen -t ed25519 -C "your_email goes here"
+
+59
+
+Wait up to 15 min until you can use the key
+
+60
+
+Connected to the Juelich Login Node
+adam$ ssh -i ~/ssh/id_ed25519 dziedzic4@jureca.fz-juelich.de
+(dziedzic4@jureca.fz-juelich.de) JSC TOTP Verification code: Use your multi-factor authenticator like FreeOTP or
+Google Authenticator
+********************************************************************************
+**** Welcome to JURECA (Juelich Research on Exascale Cluster Architectures) ****
+********************************************************************************
+* Information about the system, latest changes, user documentation and FAQs: *
+* -> https://go.fzj.de/JURECA -> https://go.fzj.de/jureca-known-issues
+*
+* Slurm job reports:
+*
+* -> https://go.fzj.de/llview-jureca
+*
+********************************************************************************
+* Status information also at https://go.fzj.de/status-jureca-dc
+*
+********************************************************************************
+2025-03-31T15:54+0200
+Information - Do not constrain GPU devices with Slurm
+Due to a bug in Slurm the GPU devices will not be constrained by cgroups until
+it is properly fixed.
+-------------------------------------------------------------------------------********************************************************************************
+
+61
+
+Use Visual Studio Code for the Development
+
+62
+
+Configure SSH Hosts
+
+63
+
+Choose the default config file
+
+64
+
+Add the connection to the Juelich cluster
+
+65
+
+Then you can connect directly to the cluster
+
+66
+
+Open new terminal
+
+67
+
+Request the allocation with the command
+Then, request the allocation of the GPUs with the command:
+salloc -p dc-gpu -t 20 -N 1 -A training2557
+
+68
+
+Use the allocated node
+Then, use the allocated node with the command:
+srun --pty bash -i
+
+69
+
+Then you are ready to use the GPUs
+
+70
+
+Questions?
+
+

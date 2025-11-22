@@ -42,12 +42,6 @@ When suggesting code changes or implementations, explain in natural language rat
 - **Smart abstractions**: Create abstractions when they reduce complexity, not for theoretical reuse
 - **Clean interfaces**: Simple, well-encapsulated APIs with minimal parameters
 
-### Documentation & Tests
-- **No new .md documentation files**: Update existing docs only
-- **No automatic test generation**: Tests are added only when requested
-- **Inline comments**: For complex logic that isn't immediately clear
-- **Docstrings**: Required for all public methods and classes (but very concise) - explain purpose and usage
-
 ### Service/Utils Pattern
 - **Always search @backend/services/ and @backend/utils/** before creating new utilities
 - Centralize shared logic (API calls, data processing, formatting)
