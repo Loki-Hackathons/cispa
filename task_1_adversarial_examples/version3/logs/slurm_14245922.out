@@ -1,0 +1,366 @@
+==================================================================
+LOCK & RAM Strategy V4: Adaptive Epsilon per Image
+==================================================================
+Job ID: 14245922
+Node: jrc0255
+Started: Sun Nov 23 12:13:41 PM CET 2025
+GPUs: 2 (parallelized)
+Expected duration: ~20-30 minutes
+==================================================================
+
+=== GPU Information ===
+index, name, memory.total [MiB], driver_version
+0, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+1, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+2, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+3, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission (iteration 3): output/submission_ram_v4.npz
+✓ Found analysis JSON: logs/analysis_api_20251123_120511.json
+======================================================================
+Lock & Ram Solver V4 - Adaptive Epsilon Initialization
+======================================================================
+GPUs: 2
+GPU 0: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+GPU 1: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY V4: FINAL Iteration (Restore Iter2 Epsilon for FAILED)
+======================================================================
+
+Step 1: Loading previous submission
+  File: output/submission_ram_v4.npz
+
+Loading previous submission: output/submission_ram_v4.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: EPSILON MAPPING - Computing per-image epsilon
+  Analysis JSON: logs/analysis_api_20251123_120511.json
+  Found iter2 analysis JSON: logs/analysis_api_20251123_110807.json
+
+Computing FINAL epsilons from: logs/analysis_api_20251123_120511.json
+Strategy: Restore iter2 epsilon (estimated from L2) for FAILED images, keep current for SUCCESS
+  Loading iter2 analysis: logs/analysis_api_20251123_110807.json
+
+Final Epsilon Mapping:
+ ID |  Status |  Iter2 L2 |  Est Eps |  Iter3 Eps |  Final Eps |          Action
+------------------------------------------------------------------------------------------
+  0 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+  1 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+  2 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+  3 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+  4 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+  5 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+  6 |  FAILED |    0.4760 |     23.1 |       30.0 |       30.0 |  RESTORE (30.0)
+  7 |  FAILED |    0.4701 |     22.8 |       30.0 |       30.0 |  RESTORE (30.0)
+  8 |  FAILED |    0.1624 |      7.9 |       30.0 |        8.0 |   RESTORE (8.0)
+  9 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 10 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 11 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 12 |  FAILED |    0.2055 |     10.0 |       30.0 |       10.0 |  RESTORE (10.0)
+ 13 |  FAILED |    0.0643 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 14 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 15 |  FAILED |    0.2055 |     10.0 |       30.0 |       10.0 |  RESTORE (10.0)
+ 16 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 17 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 18 |  FAILED |    0.1649 |      8.0 |       30.0 |        8.0 |   RESTORE (8.0)
+ 19 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 20 |  FAILED |    0.1650 |      8.0 |       30.0 |        8.0 |   RESTORE (8.0)
+ 21 |  FAILED |    0.0635 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 22 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 23 |  FAILED |    0.4611 |     22.4 |       30.0 |       30.0 |  RESTORE (30.0)
+ 24 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 25 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 26 |  FAILED |    0.4650 |     22.6 |       30.0 |       30.0 |  RESTORE (30.0)
+ 27 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 28 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 29 |  FAILED |    0.4858 |     23.6 |       30.0 |       30.0 |  RESTORE (30.0)
+ 30 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 31 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 32 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 33 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 34 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 35 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 36 |  FAILED |    0.2037 |      9.9 |       30.0 |       10.0 |  RESTORE (10.0)
+ 37 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 38 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 39 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 40 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 41 |  FAILED |    0.0641 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 42 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 43 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 44 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 45 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 46 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 47 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 48 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 49 | SUCCESS |       N/A |      N/A |        0.9 |        1.0 | INCREASE (0.9→1.0)
+ 50 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 51 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 52 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 53 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 54 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 55 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 56 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 57 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 58 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 59 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 60 |  FAILED |    0.0642 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 61 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 62 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 63 |  FAILED |    0.1630 |      7.9 |       30.0 |        8.0 |   RESTORE (8.0)
+ 64 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 65 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 66 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 67 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 68 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 69 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 70 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 71 |  FAILED |    0.4730 |     22.9 |       30.0 |       30.0 |  RESTORE (30.0)
+ 72 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 73 |  FAILED |    0.4752 |     23.0 |       30.0 |       30.0 |  RESTORE (30.0)
+ 74 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 75 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 76 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 77 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 78 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 79 |  FAILED |    0.0643 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 80 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 81 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 82 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 83 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 84 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 85 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 86 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 87 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 88 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 89 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 90 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 91 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 92 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+ 93 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 94 | SUCCESS |       N/A |      N/A |       22.0 |       24.2 | INCREASE (22.0→24.2)
+ 95 |  FAILED |    0.0644 |      3.1 |       30.0 |        3.0 |   RESTORE (3.0)
+ 96 |  FAILED |    0.1605 |      7.8 |       30.0 |        8.0 |   RESTORE (8.0)
+ 97 |  FAILED |    0.1650 |      8.0 |       30.0 |        8.0 |   RESTORE (8.0)
+ 98 |  FAILED |    0.4645 |     22.5 |       30.0 |       30.0 |  RESTORE (30.0)
+ 99 | SUCCESS |       N/A |      N/A |        6.6 |        7.3 | INCREASE (6.6→7.3)
+------------------------------------------------------------------------------------------
+
+Summary:
+  Restored from iter2 L2 (FAILED): 48 images
+  Kept/Increased (SUCCESS): 52 images
+
+Epsilon Distribution:
+  Epsilon 1.0: 1 images
+  Epsilon 3.0: 31 images
+  Epsilon 7.3: 41 images
+  Epsilon 8.0: 6 images
+  Epsilon 10.0: 3 images
+  Epsilon 24.2: 10 images
+  Epsilon 30.0: 8 images
+
+✓ Saved epsilon mapping to: logs/lock_and_ram_v4_epsilon_mapping.json
+
+✓ Targeting ALL 100 images for L2 optimization
+
+Step 3: RAM - Multi-GPU parallelized attack with adaptive epsilon (ALL images)
+
+======================================================================
+RAM ATTACK V4: Adaptive Epsilon per Image (ALL Images)
+======================================================================
+
+Configuration:
+  Target images: 100 (ALL images for L2 optimization)
+  GPUs: 2
+  Epsilon: Adaptive per image (see mapping above)
+  Kappa: 50.0
+  PGD steps: 60
+  Restarts: 3
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Remaining to process: 100 images
+  GPU 0: 50 images
+  GPU 1: 50 images
+  ✓ ResNet50
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+[GPU 0] Worker started - 50 images
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+[GPU 1] Worker started - 50 images
+[GPU 0] Image ID   0: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +25.96
+[GPU 1] Image ID  50: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +20.51
+
+💾 Progress: 2/100 images processed
+
+💾 Progress: 2/100 images processed
+[GPU 0] Image ID   1: ✗ FAILED | Eps: 7.3 | L2: 7.2466 (norm: 0.1494) | Margin: +25.73
+[GPU 1] Image ID  51: ✗ FAILED | Eps: 3.0 | L2: 2.9998 (norm: 0.0619) | Margin: +23.94
+
+💾 Progress: 4/100 images processed
+
+💾 Progress: 4/100 images processed
+
+💾 Progress: 4/100 images processed
+[GPU 0] Image ID   2: ✗ FAILED | Eps: 7.3 | L2: 7.1994 (norm: 0.1484) | Margin: +26.12
+[GPU 1] Image ID  52: ✗ FAILED | Eps: 7.3 | L2: 7.1360 (norm: 0.1471) | Margin: +25.88
+
+💾 Progress: 6/100 images processed
+
+💾 Progress: 6/100 images processed
+
+💾 Progress: 6/100 images processed
+[GPU 0] Image ID   3: ✗ FAILED | Eps: 7.3 | L2: 7.2059 (norm: 0.1486) | Margin: +23.64
+[GPU 1] Image ID  53: ✗ FAILED | Eps: 7.3 | L2: 7.2343 (norm: 0.1492) | Margin: +25.34
+
+💾 Progress: 8/100 images processed
+
+💾 Progress: 8/100 images processed
+[GPU 0] Image ID   4: ✗ FAILED | Eps: 7.3 | L2: 7.1273 (norm: 0.1470) | Margin: +22.52
+[GPU 1] Image ID  54: ✗ FAILED | Eps: 7.3 | L2: 7.2420 (norm: 0.1493) | Margin: +23.61
+
+💾 Progress: 10/100 images processed
+
+💾 Progress: 10/100 images processed
+
+💾 Progress: 10/100 images processed
+[GPU 0] Image ID   5: ✗ FAILED | Eps: 3.0 | L2: 2.9996 (norm: 0.0619) | Margin: +28.34
+[GPU 1] Image ID  55: ✗ FAILED | Eps: 7.3 | L2: 7.2600 (norm: 0.1497) | Margin: +22.37
+
+💾 Progress: 12/100 images processed
+
+💾 Progress: 12/100 images processed
+
+💾 Progress: 12/100 images processed
+[GPU 0] Image ID   6: ✗ FAILED | Eps: 30.0 | L2: 24.3840 (norm: 0.5028) | Margin: +21.30
+[GPU 1] Image ID  56: ✗ FAILED | Eps: 24.2 | L2: 21.7267 (norm: 0.4480) | Margin: +27.76
+
+💾 Progress: 14/100 images processed
+
+💾 Progress: 14/100 images processed
+[GPU 0] Image ID   7: ✗ FAILED | Eps: 30.0 | L2: 23.8480 (norm: 0.4917) | Margin: +23.99
+[GPU 1] Image ID  57: ✗ FAILED | Eps: 7.3 | L2: 7.2248 (norm: 0.1490) | Margin: +27.39
+
+💾 Progress: 16/100 images processed
+
+💾 Progress: 16/100 images processed
+
+💾 Progress: 16/100 images processed
+[GPU 0] Image ID   8: ✗ FAILED | Eps: 8.0 | L2: 7.8093 (norm: 0.1610) | Margin: +23.35
+[GPU 1] Image ID  58: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +25.77
+
+💾 Progress: 18/100 images processed
+
+💾 Progress: 18/100 images processed
+
+💾 Progress: 18/100 images processed
+[GPU 0] Image ID   9: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +28.20
+[GPU 1] Image ID  59: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +29.16
+
+💾 Progress: 20/100 images processed
+
+💾 Progress: 20/100 images processed
+[GPU 0] Image ID  10: ✗ FAILED | Eps: 7.3 | L2: 7.2366 (norm: 0.1492) | Margin: +22.15
+[GPU 1] Image ID  60: ✗ FAILED | Eps: 3.0 | L2: 2.9928 (norm: 0.0617) | Margin: +27.99
+
+💾 Progress: 22/100 images processed
+
+💾 Progress: 22/100 images processed
+
+💾 Progress: 22/100 images processed
+[GPU 0] Image ID  11: ✗ FAILED | Eps: 7.3 | L2: 7.2145 (norm: 0.1488) | Margin: +24.85
+[GPU 1] Image ID  61: ✗ FAILED | Eps: 7.3 | L2: 7.2262 (norm: 0.1490) | Margin: +24.90
+
+💾 Progress: 24/100 images processed
+
+💾 Progress: 24/100 images processed
+
+💾 Progress: 24/100 images processed
+[GPU 0] Image ID  12: ✗ FAILED | Eps: 10.0 | L2: 9.9526 (norm: 0.2052) | Margin: +24.17
+[GPU 1] Image ID  62: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +22.43
+
+💾 Progress: 26/100 images processed
+
+💾 Progress: 26/100 images processed
+[GPU 0] Image ID  13: ✗ FAILED | Eps: 3.0 | L2: 2.9991 (norm: 0.0618) | Margin: +26.59
+[GPU 1] Image ID  63: ✗ FAILED | Eps: 8.0 | L2: 7.9094 (norm: 0.1631) | Margin: +22.86
+
+💾 Progress: 28/100 images processed
+
+💾 Progress: 28/100 images processed
+
+💾 Progress: 28/100 images processed
+[GPU 0] Image ID  14: ✗ FAILED | Eps: 7.3 | L2: 7.2600 (norm: 0.1497) | Margin: +22.15
+[GPU 1] Image ID  64: ✗ FAILED | Eps: 7.3 | L2: 7.2241 (norm: 0.1490) | Margin: +25.18
+
+💾 Progress: 30/100 images processed
+
+💾 Progress: 30/100 images processed
+
+💾 Progress: 30/100 images processed
+[GPU 0] Image ID  15: ✗ FAILED | Eps: 10.0 | L2: 9.9742 (norm: 0.2057) | Margin: +21.49
+[GPU 1] Image ID  65: ✗ FAILED | Eps: 7.3 | L2: 6.9740 (norm: 0.1438) | Margin: +20.94
+
+💾 Progress: 32/100 images processed
+
+💾 Progress: 32/100 images processed
+[GPU 0] Image ID  16: ✗ FAILED | Eps: 7.3 | L2: 7.2109 (norm: 0.1487) | Margin: +25.37
+[GPU 1] Image ID  66: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +22.62
+
+💾 Progress: 34/100 images processed
+
+💾 Progress: 34/100 images processed
+
+💾 Progress: 34/100 images processed
+[GPU 0] Image ID  17: ✗ FAILED | Eps: 24.2 | L2: 21.5332 (norm: 0.4440) | Margin: +21.00
+[GPU 1] Image ID  67: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +25.95
+
+💾 Progress: 36/100 images processed
+
+💾 Progress: 36/100 images processed
+
+💾 Progress: 36/100 images processed
+[GPU 0] Image ID  18: ✗ FAILED | Eps: 8.0 | L2: 7.9990 (norm: 0.1649) | Margin: +25.31
+[GPU 1] Image ID  68: ✗ FAILED | Eps: 7.3 | L2: 7.0643 (norm: 0.1457) | Margin: +25.98
+
+💾 Progress: 38/100 images processed
+
+💾 Progress: 38/100 images processed
+[GPU 0] Image ID  19: ✗ FAILED | Eps: 7.3 | L2: 7.1014 (norm: 0.1464) | Margin: +25.88
+[GPU 1] Image ID  69: ✗ FAILED | Eps: 3.0 | L2: 3.0000 (norm: 0.0619) | Margin: +25.71
+
+💾 Progress: 40/100 images processed
+
+💾 Progress: 40/100 images processed
+
+💾 Progress: 40/100 images processed
+[GPU 0] Image ID  20: ✗ FAILED | Eps: 8.0 | L2: 8.0000 (norm: 0.1650) | Margin: +25.76
+[GPU 1] Image ID  70: ✗ FAILED | Eps: 7.3 | L2: 7.2600 (norm: 0.1497) | Margin: +21.05
+
+💾 Progress: 42/100 images processed
+
+💾 Progress: 42/100 images processed
+[GPU 0] Image ID  21: ✗ FAILED | Eps: 3.0 | L2: 2.9709 (norm: 0.0613) | Margin: +24.10
+[GPU 1] Image ID  71: ✗ FAILED | Eps: 30.0 | L2: 23.5900 (norm: 0.4864) | Margin: +22.96
+
+💾 Progress: 44/100 images processed
+
+💾 Progress: 44/100 images processed
+
+
+⚠ Interruption signal received. Saving checkpoint...

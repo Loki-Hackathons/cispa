@@ -5,9 +5,10 @@
 #SBATCH --gres=gpu:2
 #SBATCH --cpus-per-task=32
 #SBATCH --time=02:00:00
-#SBATCH --output=logs/slurm_%j.out
-#SBATCH --error=logs/slurm_%j.err
+#SBATCH --output=/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/logs/slurm_%j.out
+#SBATCH --error=/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/logs/slurm_%j.err
 #SBATCH --job-name=lock_ram_v4
+#SBATCH --chdir=/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3
 
 # LOCK & RAM Strategy V4: Adaptive Epsilon per Image
 # - Uses API results to identify failures (not local surrogate)
@@ -39,15 +40,15 @@ echo "=== GPU Information ==="
 nvidia-smi --query-gpu=index,name,memory.total,driver_version --format=csv
 echo ""
 
-# Check if previous submission exists
-PREVIOUS_SUB="output/submission_ram_v3.npz"
+# Check if previous submission exists (iteration 3)
+PREVIOUS_SUB="output/submission_ram_v4.npz"
 if [ ! -f "$PREVIOUS_SUB" ]; then
     echo "ERROR: Previous submission not found: $PREVIOUS_SUB"
-    echo "Please run lock_and_ram_v3.py first to generate submission_ram_v3.npz"
+    echo "Please run lock_and_ram_v4.py (iteration 3) first to generate submission_ram_v4.npz"
     exit 1
 fi
 
-echo "✓ Found previous submission: $PREVIOUS_SUB"
+echo "✓ Found previous submission (iteration 3): $PREVIOUS_SUB"
 
 # Find analysis JSON (REQUIRED - contains L2 distances)
 ANALYSIS_JSON=""
@@ -77,11 +78,12 @@ python -u lock_and_ram_v4.py \
     --dataset ../natural_images.pt \
     --output-dir ./output \
     --log-dir ./logs \
-    --output-name submission_ram_v4.npz \
+    --output-name submission_ram_v4_final.npz \
     --kappa 50.0 \
-    --pgd-steps 80 \
-    --restarts 5 \
-    --num-gpus 2
+    --pgd-steps 60 \
+    --restarts 3 \
+    --num-gpus 2 \
+    --final-iteration
 
 exit_code=$?
 

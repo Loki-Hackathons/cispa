@@ -101,6 +101,138 @@ class LockAndRamSolverV4:
         
         return adv_images, adv_ids
     
+    def compute_adaptive_epsilons_final(
+        self,
+        analysis_json_path: str,
+        previous_epsilon_mapping: Optional[Dict[int, float]] = None,
+        iter2_analysis_json: Optional[str] = None
+    ) -> Dict[int, float]:
+        """
+        Compute epsilon for FINAL iteration: restore iter2 epsilon for FAILED images.
+        
+        Strategy (FINAL - optimization for best score):
+        - For images FAILED in remote: restore epsilon from iteration 2 (estimated from L2)
+        - For images SUCCESS: keep current epsilon (or slightly increase for safety)
+        - DO NOT decrease epsilon in final iteration
+        
+        Args:
+            analysis_json_path: Path to analysis_api JSON file (iteration 3)
+            previous_epsilon_mapping: Epsilon mapping from iteration 3
+            iter2_analysis_json: Path to analysis_api JSON file from iteration 2 (to get L2 distances)
+        
+        Returns:
+            Dictionary mapping image_id -> epsilon
+        """
+        print(f"\nComputing FINAL epsilons from: {analysis_json_path}")
+        print("Strategy: Restore iter2 epsilon (estimated from L2) for FAILED images, keep current for SUCCESS")
+        
+        if not os.path.exists(analysis_json_path):
+            raise FileNotFoundError(f"Analysis JSON not found: {analysis_json_path}")
+        
+        # Load iteration 3 analysis
+        with open(analysis_json_path, 'r') as f:
+            analysis_data = json.load(f)
+        
+        per_image = analysis_data.get('per_image', [])
+        if not per_image:
+            raise ValueError("No 'per_image' data found in analysis JSON")
+        
+        if previous_epsilon_mapping is None:
+            raise ValueError("previous_epsilon_mapping is required for final iteration")
+        
+        # Load iteration 2 analysis to estimate epsilons from L2 distances
+        iter2_l2_map = {}
+        if iter2_analysis_json and os.path.exists(iter2_analysis_json):
+            print(f"  Loading iter2 analysis: {iter2_analysis_json}")
+            with open(iter2_analysis_json, 'r') as f:
+                iter2_data = json.load(f)
+            iter2_per_image = iter2_data.get('per_image', [])
+            for item in iter2_per_image:
+                img_id = item['image_id']
+                l2_norm = item['l2_normalized']
+                iter2_l2_map[img_id] = l2_norm
+        else:
+            print("  ⚠ Warning: iter2_analysis_json not provided, will use default epsilon=30.0")
+        
+        # Compute L2 norm factor for epsilon estimation
+        C, H, W = self.images.shape[1], self.images.shape[2], self.images.shape[3]
+        l2_norm_factor = np.sqrt(C * H * W)
+        
+        epsilon_mapping = {}
+        restored_count = 0
+        kept_count = 0
+        
+        print("\nFinal Epsilon Mapping:")
+        print(f"{'ID':>3} | {'Status':>7} | {'Iter2 L2':>9} | {'Est Eps':>8} | {'Iter3 Eps':>10} | {'Final Eps':>10} | {'Action':>15}")
+        print("-" * 90)
+        
+        for item in per_image:
+            img_id = item['image_id']
+            is_success = item.get('misclassified', True)
+            prev_epsilon = previous_epsilon_mapping.get(img_id, 30.0)
+            
+            if not is_success:
+                # FAILED in remote - restore iter2 epsilon estimated from L2
+                if img_id in iter2_l2_map:
+                    l2_iter2 = iter2_l2_map[img_id]
+                    eps_estimated = l2_iter2 * l2_norm_factor
+                    
+                    # Round to realistic epsilon values
+                    if eps_estimated < 1.5:
+                        new_epsilon = 1.0
+                    elif eps_estimated < 5:
+                        new_epsilon = 3.0
+                    elif eps_estimated < 9:
+                        new_epsilon = 8.0
+                    elif eps_estimated < 15:
+                        new_epsilon = 10.0
+                    else:
+                        new_epsilon = 30.0
+                    
+                    action = f"RESTORE ({new_epsilon:.1f})"
+                    l2_str = f"{l2_iter2:.4f}"
+                    eps_est_str = f"{eps_estimated:.1f}"
+                else:
+                    # Fallback: use high epsilon
+                    new_epsilon = 30.0
+                    action = "RESTORE (30.0)"
+                    l2_str = "N/A"
+                    eps_est_str = "N/A"
+                
+                restored_count += 1
+            else:
+                # SUCCESS - keep current epsilon (or slightly increase for safety)
+                l2_str = "N/A"
+                eps_est_str = "N/A"
+                if prev_epsilon < 30.0:
+                    # Current epsilon is lower - increase slightly for safety
+                    new_epsilon = min(prev_epsilon * 1.1, 30.0)
+                    action = f"INCREASE ({prev_epsilon:.1f}→{new_epsilon:.1f})"
+                else:
+                    # Current epsilon is already high enough - keep it
+                    new_epsilon = prev_epsilon
+                    action = "KEEP"
+                kept_count += 1
+            
+            epsilon_mapping[img_id] = float(new_epsilon)
+            
+            status_str = "SUCCESS" if is_success else "FAILED"
+            print(f"{img_id:3d} | {status_str:>7} | {l2_str:>9} | {eps_est_str:>8} | {prev_epsilon:10.1f} | {new_epsilon:10.1f} | {action:>15}")
+        
+        print("-" * 90)
+        print(f"\nSummary:")
+        print(f"  Restored from iter2 L2 (FAILED): {restored_count} images")
+        print(f"  Kept/Increased (SUCCESS): {kept_count} images")
+        
+        # Show distribution
+        from collections import Counter
+        eps_dist = Counter(epsilon_mapping.values())
+        print(f"\nEpsilon Distribution:")
+        for eps, count in sorted(eps_dist.items()):
+            print(f"  Epsilon {eps:.1f}: {count} images")
+        
+        return epsilon_mapping
+    
     def compute_adaptive_epsilons(
         self,
         analysis_json_path: str,
@@ -594,11 +726,15 @@ class LockAndRamSolverV4:
         kappa: float = 50.0,
         pgd_steps: int = 80,
         num_restarts: int = 5,
-        output_filename: str = "submission_ram_v4.npz"
+        output_filename: str = "submission_ram_v4.npz",
+        final_iteration: bool = False
     ):
         """Run Lock & Ram V4 strategy with adaptive epsilon - attacks ALL images."""
         print("\n" + "=" * 70)
-        print("LOCK & RAM STRATEGY V4: Adaptive Epsilon (ALL Images)")
+        if final_iteration:
+            print("LOCK & RAM STRATEGY V4: FINAL Iteration (Restore Iter2 Epsilon for FAILED)")
+        else:
+            print("LOCK & RAM STRATEGY V4: Adaptive Epsilon (ALL Images)")
         print("=" * 70)
         
         # Load previous submission
@@ -609,17 +745,46 @@ class LockAndRamSolverV4:
         # Load previous epsilon mapping if exists
         previous_epsilon_mapping = self.load_epsilon_mapping()
         
+        if not previous_epsilon_mapping:
+            raise ValueError("previous_epsilon_mapping is required. Load it from logs/lock_and_ram_v4_epsilon_mapping.json")
+        
         # Compute adaptive epsilons for ALL images
-        print(f"\nStep 2: ADAPTIVE EPSILON - Computing per-image epsilon")
+        print(f"\nStep 2: EPSILON MAPPING - Computing per-image epsilon")
         print(f"  Analysis JSON: {analysis_json}")
-        epsilon_mapping = self.compute_adaptive_epsilons(analysis_json, previous_epsilon_mapping)
+        if final_iteration:
+            # Find iter2 analysis JSON automatically
+            iter2_analysis_json = None
+            analysis_dir = Path(analysis_json).parent
+            analysis_files = sorted(analysis_dir.glob("analysis_api_*.json"), key=lambda p: p.stat().st_mtime, reverse=True)
+            if len(analysis_files) >= 2:
+                iter2_analysis_json = str(analysis_files[1])  # Second most recent
+                print(f"  Found iter2 analysis JSON: {iter2_analysis_json}")
+            
+            epsilon_mapping = self.compute_adaptive_epsilons_final(
+                analysis_json, 
+                previous_epsilon_mapping,
+                iter2_analysis_json=iter2_analysis_json
+            )
+        else:
+            epsilon_mapping = self.compute_adaptive_epsilons(analysis_json, previous_epsilon_mapping)
         
         # Save epsilon mapping for next iteration
         self.save_epsilon_mapping(epsilon_mapping)
         
-        # Target ALL images for L2 optimization (all are SUCCESS, we just want lower L2)
-        all_image_ids = set(int(img_id) for img_id in self.image_ids)
-        print(f"\n✓ Targeting ALL {len(all_image_ids)} images for L2 optimization")
+        # Determine target images based on iteration type
+        if final_iteration:
+            # FINAL: Only attack FAILED images, keep SUCCESS as-is
+            with open(analysis_json, 'r') as f:
+                iter3_data = json.load(f)
+            failed_ids = [item['image_id'] for item in iter3_data.get('per_image', []) 
+                         if not item.get('misclassified', True)]
+            target_image_ids = set(failed_ids)
+            print(f"\n✓ FINAL ITERATION: Targeting only {len(target_image_ids)} FAILED images")
+            print(f"  Keeping {100 - len(target_image_ids)} SUCCESS images unchanged")
+        else:
+            # REGULAR: Attack ALL images for L2 optimization
+            target_image_ids = set(int(img_id) for img_id in self.image_ids)
+            print(f"\n✓ Targeting ALL {len(target_image_ids)} images for L2 optimization")
         
         # Set up signal handler
         def signal_handler(signum, frame):
@@ -628,10 +793,13 @@ class LockAndRamSolverV4:
         signal.signal(signal.SIGINT, signal_handler)
         signal.signal(signal.SIGTERM, signal_handler)
         
-        # RAM attack on ALL images with adaptive epsilon
-        print(f"\nStep 3: RAM - Multi-GPU parallelized attack with adaptive epsilon (ALL images)")
+        # RAM attack on target images with adaptive epsilon
+        if final_iteration:
+            print(f"\nStep 3: RAM - Multi-GPU parallelized attack (FAILED images only)")
+        else:
+            print(f"\nStep 3: RAM - Multi-GPU parallelized attack with adaptive epsilon (ALL images)")
         ram_results = self.ram_attack_all_parallel(
-            all_image_ids,
+            target_image_ids,
             epsilon_mapping,
             kappa=kappa,
             pgd_steps=pgd_steps,
@@ -683,6 +851,8 @@ def main():
                        help='Number of restarts')
     parser.add_argument('--num-gpus', type=int, default=2,
                        help='Number of GPUs')
+    parser.add_argument('--final-iteration', action='store_true',
+                       help='Final iteration: restore iter2 epsilon (estimated from L2) for FAILED images')
     
     args = parser.parse_args()
     
@@ -699,7 +869,8 @@ def main():
         kappa=args.kappa,
         pgd_steps=args.pgd_steps,
         num_restarts=args.restarts,
-        output_filename=args.output_name
+        output_filename=args.output_name,
+        final_iteration=args.final_iteration
     )
 
 
