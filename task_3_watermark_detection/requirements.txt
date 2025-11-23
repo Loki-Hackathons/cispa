@@ -5,3 +5,5 @@ requests
 scikit-learn
 numpy
 pillow
+opencv-python
+pywavelets
