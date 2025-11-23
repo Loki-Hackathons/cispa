@@ -1,0 +1,117 @@
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 195, in _worker_thread
+    config_dict['epsilon'],
+    ~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 659, in <module>
+    main()
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 647, in main
+    solver.run(
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 571, in run
+    ram_results = self.ram_attack_failed_parallel(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 347, in ram_attack_failed_parallel
+    if len(results) > len(checkpoint_results):
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()

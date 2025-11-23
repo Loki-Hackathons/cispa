@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-11-23T10:40:35.537944",
+  "file": "output/submission_ram_v2.npz",
+  "file_size_mb": 0.705244,
+  "response": {
+    "submission_id": 3072,
+    "status": "success",
+    "message": "Submission evaluated successfully!"
+  }
+}

@@ -1,0 +1,225 @@
+==================================================================
+LOCK & RAM Strategy: Freeze & Boost
+==================================================================
+Job ID: 14245594
+Node: jrc0384
+Started: Sun Nov 23 08:48:34 AM CET 2025
+Expected duration: ~10-15 minutes (68 images only, no BS)
+==================================================================
+
+=== GPU Information ===
+name, memory.total [MiB], driver_version
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission: output/submission_fast.npz
+✓ Found logits JSON: logs/api/logits_submission_fast_20251123_024816.json
+======================================================================
+Lock & Ram Solver Initialization
+======================================================================
+Device: cuda
+GPU: NVIDIA A100-SXM4-40GB
+GPU Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+
+Initializing Hybrid Ensemble (fast_mode=True)...
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY
+======================================================================
+
+Step 1: LOCK - Loading previous submission
+  File: output/submission_fast.npz
+
+Loading previous submission: output/submission_fast.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: LOCK - Identifying SUCCESS/FAILED images
+
+Identifying SUCCESS/FAILED from: logs/api/logits_submission_fast_20251123_024816.json
+✓ Identified:
+  SUCCESS: 32 images
+  FAILED:  68 images
+
+✓ Locked 32 SUCCESS images (will be frozen)
+✓ Targeting 68 FAILED images for RAM attack
+
+Step 3: RAM - Aggressive attack on failed images
+  Note: Results are saved to checkpoint after each image.
+  Press Ctrl+C to interrupt and create partial submission.
+
+======================================================================
+RAM ATTACK: Aggressive Attack on Failed Images
+======================================================================
+
+Configuration:
+  Target images: 68
+  Epsilon (fixed): 8.0
+  Kappa: 30.0
+  PGD steps: 150
+  Restarts: 5
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Binary Search: DISABLED (fixed epsilon)
+✓ Loaded 1 results from checkpoint
+
+[ 67/67] RAM Attack on Image ID  99 (Label:   8)
+  💾 Checkpoint saved (image 99)
+  ✓ SUCCESS
+  L2: 7.9386 (norm: 0.1637) | ε: 8.000 | Margin: +32.65 | Time: 48.1s
+
+======================================================================
+RAM Attack Complete
+======================================================================
+
+Total duration: 0.80 minutes
+Average time per image: 0.7 seconds
+
+RAM Attack Results:
+  Successful: 2 (100.0%)
+  Failed:     0
+
+L2 Distances:
+  Average (all, norm):    0.164043
+  Average (success, norm): 0.164043
+
+Confidence Margins:
+  Average (all):     +31.505
+  Average (success): +31.505
+✓ Cleared checkpoint (run completed)
+
+Step 4: MERGE - Combining frozen + RAM results
+
+======================================================================
+Merging Results: Lock (Frozen) + Ram (New)
+======================================================================
+⚠ Warning: Image ID 2 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 3 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 4 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 6 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 7 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 8 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 10 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 11 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 12 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 14 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 15 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 16 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 17 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 18 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 19 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 20 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 23 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 24 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 26 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 27 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 28 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 29 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 31 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 33 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 35 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 36 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 37 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 38 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 39 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 40 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 42 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 43 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 47 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 48 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 52 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 53 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 54 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 55 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 56 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 57 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 61 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 63 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 64 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 65 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 68 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 70 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 71 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 72 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 73 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 74 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 75 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 76 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 80 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 81 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 84 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 85 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 86 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 87 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 90 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 91 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 92 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 93 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 94 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 96 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 97 not in SUCCESS or RAM results, using original
+⚠ Warning: Image ID 98 not in SUCCESS or RAM results, using original
+
+Merge Summary:
+  Frozen (SUCCESS): 32 images
+  RAM (new attack): 2 images
+  Missing:          66 images
+  Total:            100 images
+
+✓ Saved merged submission to: output/submission_ram_test.npz
+  Shape: (100, 3, 28, 28)
+  Dtype: float32
+
+======================================================================
+LOCK & RAM COMPLETE!
+======================================================================
+
+Output saved to: output/submission_ram_test.npz
+
+Next steps:
+1. Review results: python analyze.py output/submission_ram_test.npz --mode local
+2. Submit to API: python submit.py output/submission_ram_test.npz --action submit
+3. Check leaderboard: http://34.122.51.94:80/leaderboard_page
+
+==================================================================
+Job completed: Sun Nov 23 08:49:32 AM CET 2025
+Exit code: 0
+==================================================================
+
+✓ Lock & Ram strategy completed successfully!
+
+==================================================================
+SUBMISSION INSTRUCTIONS
+==================================================================
+
+1. Review results locally (fast):
+   python analyze.py output/submission_ram_test.npz --mode local
+
+2. Test transfer with API (wait 15 min after last query if needed):
+   python analyze.py output/submission_ram_test.npz --mode api
+
+3. Submit to leaderboard (wait 5 min after last submission if needed):
+   python submit.py output/submission_ram_test.npz --action submit
+
+4. Check leaderboard:
+   http://34.122.51.94:80/leaderboard_page
+
+==================================================================
+NOTE: API rate limits:
+  - Logits query: 1 every 15 minutes
+  - Submission: 1 every 5 minutes
+==================================================================

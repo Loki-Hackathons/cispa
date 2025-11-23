@@ -1,0 +1,109 @@
+==================================================================
+LOCK & RAM Strategy: Freeze & Boost
+==================================================================
+Job ID: 14245576
+Node: jrc0384
+Started: Sun Nov 23 08:33:49 AM CET 2025
+Expected duration: ~10-15 minutes (68 images only, no BS)
+==================================================================
+
+=== GPU Information ===
+name, memory.total [MiB], driver_version
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission: output/submission_fast.npz
+✓ Found logits JSON: logs/api/logits_submission_fast_20251123_024816.json
+======================================================================
+Lock & Ram Solver Initialization
+======================================================================
+Device: cuda
+GPU: NVIDIA A100-SXM4-40GB
+GPU Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+
+Initializing Hybrid Ensemble (fast_mode=True)...
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY
+======================================================================
+
+Step 1: LOCK - Loading previous submission
+  File: output/submission_fast.npz
+
+Loading previous submission: output/submission_fast.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: LOCK - Identifying SUCCESS/FAILED images
+
+Identifying SUCCESS/FAILED from: logs/api/logits_submission_fast_20251123_024816.json
+✓ Identified:
+  SUCCESS: 32 images
+  FAILED:  68 images
+
+✓ Locked 32 SUCCESS images (will be frozen)
+✓ Targeting 68 FAILED images for RAM attack
+
+Step 3: RAM - Aggressive attack on failed images
+
+======================================================================
+RAM ATTACK: Aggressive Attack on Failed Images
+======================================================================
+
+Configuration:
+  Target images: 68
+  Epsilon (fixed): 8.0
+  Kappa: 50.0
+  PGD steps: 50
+  Restarts: 5
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Binary Search: DISABLED (fixed epsilon)
+
+[  1/68] RAM Attack on Image ID   1 (Label:   4)
+  ✗ FAILED
+  L2: 7.9747 (norm: 0.1644) | ε: 8.000 | Margin: +27.32 | Time: 16.2s
+
+[  2/68] RAM Attack on Image ID   2 (Label:   7)
+  ✗ FAILED
+  L2: 7.8792 (norm: 0.1625) | ε: 8.000 | Margin: +22.26 | Time: 15.5s
+
+[  3/68] RAM Attack on Image ID   3 (Label:   5)
+  ✗ FAILED
+  L2: 7.8880 (norm: 0.1626) | ε: 8.000 | Margin: +20.95 | Time: 15.5s
+
+[  4/68] RAM Attack on Image ID   4 (Label:   5)
+  ✗ FAILED
+  L2: 7.8300 (norm: 0.1615) | ε: 8.000 | Margin: +22.60 | Time: 15.5s
+
+[  5/68] RAM Attack on Image ID   6 (Label:   3)
+  ✗ FAILED
+  L2: 7.9753 (norm: 0.1644) | ε: 8.000 | Margin: +27.52 | Time: 15.5s
+
+[  6/68] RAM Attack on Image ID   7 (Label:   3)
+  ✗ FAILED
+  L2: 7.9876 (norm: 0.1647) | ε: 8.000 | Margin: +25.99 | Time: 15.5s
+
+[  7/68] RAM Attack on Image ID   8 (Label:   5)
+  ✗ FAILED
+  L2: 7.7809 (norm: 0.1604) | ε: 8.000 | Margin: +23.02 | Time: 15.5s
+
+[  8/68] RAM Attack on Image ID  10 (Label:   5)
+  ✗ FAILED
+  L2: 7.9412 (norm: 0.1637) | ε: 8.000 | Margin: +22.05 | Time: 15.5s
+
+[  9/68] RAM Attack on Image ID  11 (Label:   8)

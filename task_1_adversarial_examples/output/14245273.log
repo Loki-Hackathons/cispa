@@ -1,0 +1,24 @@
+Starting Solver...
+=== Phase 1: Local Solver (Doctorant Grade) ===
+Loaded 100 images.
+  [+] Loading resnet50... Done.
+  [+] Loading densenet121... Done.
+  [+] Loading vgg16_bn... Done.
+  [+] Loading efficientnet_b0... Done.
+
+[1/100] Image 0 (True: 0) | Kappa: 0.0
+  -> Success! L2: 0.3750
+
+[2/100] Image 1 (True: 4) | Kappa: 0.0
+  -> Success! L2: 0.3750
+
+[3/100] Image 2 (True: 7) | Kappa: 0.0
+  -> Success! L2: 0.3750
+
+[4/100] Image 3 (True: 5) | Kappa: 0.0
+  -> Success! L2: 0.3750
+
+[5/100] Image 4 (True: 5) | Kappa: 0.0
+  -> Success! L2: 0.3750
+
+[6/100] Image 5 (True: 8) | Kappa: 0.0

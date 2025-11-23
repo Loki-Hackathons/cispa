@@ -311,6 +311,56 @@ class BSPGD:
             binary_search_path=bs_path
         )
     
+    def attack_single_epsilon(
+        self,
+        x_orig: torch.Tensor,
+        label: torch.Tensor,
+        image_id: int,
+        epsilon: float,
+        kappa: float
+    ) -> AttackResult:
+        """
+        Attack with a single fixed epsilon (no binary search).
+        
+        This is optimized for speed when epsilon is already fixed.
+        Used by Lock & Ram strategy.
+        
+        Args:
+            x_orig: Original image (1, 3, 28, 28)
+            label: True label (1,)
+            image_id: Image ID
+            epsilon: Fixed epsilon value
+            kappa: Confidence margin requirement
+        
+        Returns:
+            AttackResult
+        """
+        # Update config kappa for this image
+        old_kappa = self.config.kappa
+        self.config.kappa = kappa
+        
+        alpha = self.config.get_alpha(epsilon)
+        
+        # Run multi-restart PGD at fixed epsilon
+        best_adv, best_l2, success, best_margin, num_succeeded = self.pgd_multi_restart(
+            x_orig, label, epsilon, alpha
+        )
+        
+        # Restore config
+        self.config.kappa = old_kappa
+        
+        return AttackResult(
+            image_id=image_id,
+            adversarial=best_adv,
+            l2_distance=best_l2,
+            epsilon_used=epsilon,
+            kappa_used=kappa,
+            success=success,
+            confidence_margin=best_margin,
+            num_restarts_succeeded=num_succeeded,
+            binary_search_path=[(epsilon, success, best_l2, best_margin)]
+        )
+    
     def attack_batch(
         self,
         images: torch.Tensor,

@@ -1,0 +1,32 @@
+Exception in thread Thread-1 (_worker_thread):
+Traceback (most recent call last):
+  File "/p/software/jurecadc/stages/2025/software/Python/3.12.3-GCCcore-13.3.0/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/p/software/jurecadc/stages/2025/software/Python/3.12.3-GCCcore-13.3.0/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 182, in _worker_thread
+    config = AttackConfig(**config_dict)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AttackConfig.__init__() got an unexpected keyword argument 'epsilon'
+Exception in thread Thread-2 (_worker_thread):
+Traceback (most recent call last):
+  File "/p/software/jurecadc/stages/2025/software/Python/3.12.3-GCCcore-13.3.0/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/p/software/jurecadc/stages/2025/software/Python/3.12.3-GCCcore-13.3.0/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 182, in _worker_thread
+    config = AttackConfig(**config_dict)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AttackConfig.__init__() got an unexpected keyword argument 'epsilon'
+Traceback (most recent call last):
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 662, in <module>
+    main()
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 650, in main
+    solver.run(
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 574, in run
+    ram_results = self.ram_attack_failed_parallel(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/p/home/jusers/ansart1/jureca/code/task_1_adversarial_examples/version3/lock_and_ram_v2.py", line 350, in ram_attack_failed_parallel
+    if len(results) > len(checkpoint_results):
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'NoneType' has no len()

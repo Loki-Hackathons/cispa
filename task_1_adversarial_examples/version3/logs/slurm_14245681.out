@@ -1,0 +1,174 @@
+==================================================================
+LOCK & RAM Strategy: Freeze & Boost
+==================================================================
+Job ID: 14245681
+Node: jrc0352
+Started: Sun Nov 23 09:50:23 AM CET 2025
+Expected duration: ~10-15 minutes (68 images only, no BS)
+==================================================================
+
+=== GPU Information ===
+name, memory.total [MiB], driver_version
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission: output/submission_fast.npz
+✓ Found logits JSON: logs/api/logits_submission_fast_20251123_024816.json
+======================================================================
+Lock & Ram Solver Initialization
+======================================================================
+Device: cuda
+GPU: NVIDIA A100-SXM4-40GB
+GPU Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+
+Initializing Hybrid Ensemble (fast_mode=True)...
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY
+======================================================================
+
+Step 1: LOCK - Loading previous submission
+  File: output/submission_fast.npz
+
+Loading previous submission: output/submission_fast.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: LOCK - Identifying SUCCESS/FAILED images
+
+Identifying SUCCESS/FAILED from: logs/api/logits_submission_fast_20251123_024816.json
+✓ Identified:
+  SUCCESS: 32 images
+  FAILED:  68 images
+
+✓ Locked 32 SUCCESS images (will be frozen)
+✓ Targeting 68 FAILED images for RAM attack
+
+Step 3: RAM - Aggressive attack on failed images
+  Note: Results are saved to checkpoint after each image.
+  Press Ctrl+C to interrupt and create partial submission.
+
+======================================================================
+RAM ATTACK: Aggressive Attack on Failed Images
+======================================================================
+
+Configuration:
+  Target images: 68
+  Epsilon (fixed): 8.0
+  Kappa: 30.0
+  PGD steps: 150
+  Restarts: 5
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Binary Search: DISABLED (fixed epsilon)
+✓ Loaded 64 results from checkpoint
+
+[  1/4] RAM Attack on Image ID  96 (Label:   4)
+  💾 Checkpoint saved (image 96)
+  ✓ SUCCESS
+  L2: 7.7846 (norm: 0.1605) | ε: 8.000 | Margin: +30.33 | Time: 47.9s
+
+[  2/4] RAM Attack on Image ID  97 (Label:   5)
+  💾 Checkpoint saved (image 97)
+  ✗ FAILED
+  L2: 8.0000 (norm: 0.1650) | ε: 8.000 | Margin: +28.68 | Time: 47.2s
+
+[  3/4] RAM Attack on Image ID  98 (Label:   3)
+  💾 Checkpoint saved (image 98)
+  ✓ SUCCESS
+  L2: 7.9824 (norm: 0.1646) | ε: 8.000 | Margin: +31.71 | Time: 46.3s
+
+[  4/4] RAM Attack on Image ID  99 (Label:   8)
+  💾 Checkpoint saved (image 99)
+  ✓ SUCCESS
+  L2: 7.9392 (norm: 0.1637) | ε: 8.000 | Margin: +30.09 | Time: 46.1s
+
+======================================================================
+RAM Attack Complete
+======================================================================
+
+Total duration: 3.12 minutes
+Average time per image: 46.9 seconds
+
+RAM Attack Results:
+  Successful: 56 (82.4%)
+  Failed:     12
+
+L2 Distances:
+  Average (all, norm):    0.163601
+  Average (success, norm): 0.163723
+
+Confidence Margins:
+  Average (all):     +30.681
+  Average (success): +31.123
+✓ Cleared checkpoint (run completed)
+
+Step 4: MERGE - Combining frozen + RAM results
+
+======================================================================
+Merging Results: Lock (Frozen) + Ram (New)
+======================================================================
+
+Merge Summary:
+  Frozen (SUCCESS): 32 images
+  RAM (new attack): 68 images
+  Missing:          0 images
+  Total:            100 images
+
+✓ Saved merged submission to: output/submission_ram_test.npz
+  Shape: (100, 3, 28, 28)
+  Dtype: float32
+
+======================================================================
+LOCK & RAM COMPLETE!
+======================================================================
+
+Output saved to: output/submission_ram_test.npz
+
+Next steps:
+1. Review results: python analyze.py output/submission_ram_test.npz --mode local
+2. Submit to API: python submit.py output/submission_ram_test.npz --action submit
+3. Check leaderboard: http://34.122.51.94:80/leaderboard_page
+
+==================================================================
+Job completed: Sun Nov 23 09:53:42 AM CET 2025
+Exit code: 0
+==================================================================
+
+✓ Lock & Ram strategy completed successfully!
+
+==================================================================
+SUBMISSION INSTRUCTIONS
+==================================================================
+
+1. Review results locally (fast):
+   python analyze.py output/submission_ram_test.npz --mode local
+
+2. Test transfer with API (wait 15 min after last query if needed):
+   python analyze.py output/submission_ram_test.npz --mode api
+
+3. Submit to leaderboard (wait 5 min after last submission if needed):
+   python submit.py output/submission_ram_test.npz --action submit
+
+4. Check leaderboard:
+   http://34.122.51.94:80/leaderboard_page
+
+==================================================================
+NOTE: API rate limits:
+  - Logits query: 1 every 15 minutes
+  - Submission: 1 every 5 minutes
+==================================================================

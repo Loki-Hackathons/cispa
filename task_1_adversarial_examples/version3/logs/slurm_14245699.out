@@ -1,0 +1,887 @@
+==================================================================
+LOCK & RAM Strategy V2: Multi-GPU Parallelized
+==================================================================
+Job ID: 14245699
+Node: jrc0223
+Started: Sun Nov 23 10:02:32 AM CET 2025
+GPUs: 2 (parallelized)
+Expected duration: ~30-40 minutes for ~28 failed images
+==================================================================
+
+=== GPU Information ===
+index, name, memory.total [MiB], driver_version
+0, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+1, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+2, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+3, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission: output/submission_ram_test.npz
+✓ Found API logits JSON: logs/api/logits_submission_ram_test_20251123_095414.json
+======================================================================
+Lock & Ram Solver V2 - Multi-GPU Initialization
+======================================================================
+GPUs: 2
+GPU 0: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+GPU 1: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY V2
+======================================================================
+
+Step 1: LOCK - Loading previous submission
+  File: output/submission_ram_test.npz
+
+Loading previous submission: output/submission_ram_test.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: LOCK - Identifying SUCCESS/FAILED from API results
+  API logits JSON: logs/api/logits_submission_ram_test_20251123_095414.json
+
+Identifying SUCCESS/FAILED from API results: logs/api/logits_submission_ram_test_20251123_095414.json
+✓ Identified from API results:
+  SUCCESS (misclassified): 79 images
+  FAILED (correctly classified): 21 images
+
+✓ Locked 79 SUCCESS images (will be frozen)
+✓ Targeting 21 FAILED images for RAM attack
+
+Step 3: RAM - Multi-GPU parallelized attack on API failures
+
+======================================================================
+RAM ATTACK V2: Multi-GPU Parallelized Attack on API Failures
+======================================================================
+
+Configuration:
+  Target images: 21 (from API failures)
+  GPUs: 2
+  Epsilon (fixed): 10.0
+  Kappa: 50.0
+  PGD steps: 250
+  Restarts: 10
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Binary Search: DISABLED (fixed epsilon)
+  Remaining to process: 21 images
+  GPU 0: 10 images
+  GPU 1: 11 images
+  ✓ ResNet50
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+[GPU 1] Worker started - 11 images
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+[GPU 0] Worker started - 10 images
+[GPU 0] Image ID   6: ✗ FAILED | L2: 9.9326 (norm: 0.2048) | Margin: +43.30
+[GPU 1] Image ID  36: ✗ FAILED | L2: 9.8813 (norm: 0.2037) | Margin: +33.26
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+
+💾 Progress: 2/21 images processed
+[GPU 0] Image ID   7: ✗ FAILED | L2: 9.9618 (norm: 0.2054) | Margin: +42.32
+[GPU 1] Image ID  38: ✗ FAILED | L2: 9.9753 (norm: 0.2057) | Margin: +42.20
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+
+💾 Progress: 4/21 images processed
+[GPU 0] Image ID  12: ✗ FAILED | L2: 9.9679 (norm: 0.2055) | Margin: +38.40
+[GPU 1] Image ID  56: ✗ FAILED | L2: 9.9815 (norm: 0.2058) | Margin: +42.76
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+
+💾 Progress: 6/21 images processed
+[GPU 0] Image ID  15: ✗ FAILED | L2: 9.9663 (norm: 0.2055) | Margin: +34.15
+[GPU 1] Image ID  71: ✗ FAILED | L2: 9.9385 (norm: 0.2049) | Margin: +43.78
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+
+💾 Progress: 8/21 images processed
+[GPU 0] Image ID  17: ✗ FAILED | L2: 9.9682 (norm: 0.2055) | Margin: +45.41
+[GPU 1] Image ID  72: ✗ FAILED | L2: 9.9564 (norm: 0.2053) | Margin: +44.85
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+
+💾 Progress: 10/21 images processed
+[GPU 0] Image ID  23: ✗ FAILED | L2: 9.9788 (norm: 0.2058) | Margin: +43.89
+[GPU 1] Image ID  73: ✗ FAILED | L2: 9.9422 (norm: 0.2050) | Margin: +42.70
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+
+💾 Progress: 12/21 images processed
+[GPU 0] Image ID  26: ✗ FAILED | L2: 9.9517 (norm: 0.2052) | Margin: +44.22
+[GPU 1] Image ID  87: ✗ FAILED | L2: 9.9550 (norm: 0.2053) | Margin: +44.07
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+
+💾 Progress: 14/21 images processed
+[GPU 0] Image ID  27: ✗ FAILED | L2: 9.9826 (norm: 0.2058) | Margin: +43.03
+[GPU 1] Image ID  90: ✗ FAILED | L2: 9.9558 (norm: 0.2053) | Margin: +43.21
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+
+💾 Progress: 16/21 images processed
+[GPU 0] Image ID  29: ✗ FAILED | L2: 9.9148 (norm: 0.2044) | Margin: +45.28
+[GPU 1] Image ID  93: ✗ FAILED | L2: 9.9686 (norm: 0.2055) | Margin: +42.83
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+
+💾 Progress: 18/21 images processed
+[GPU 0] Image ID  33: ✗ FAILED | L2: 9.9645 (norm: 0.2055) | Margin: +43.88
+[GPU 0] Worker finished
+[GPU 1] Image ID  94: ✗ FAILED | L2: 9.9808 (norm: 0.2058) | Margin: +44.56
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+
+💾 Progress: 20/21 images processed
+[GPU 1] Image ID  98: ✗ FAILED | L2: 9.9716 (norm: 0.2056) | Margin: +43.46
+[GPU 1] Worker finished
+
+💾 Progress: 21/21 images processed
+
+======================================================================
+RAM Attack Complete
+======================================================================
+
+Total duration: 32.58 minutes
+Average time per image: 93.1 seconds
+
+RAM Attack Results:
+  Successful: 0 (0.0%)
+  Failed:     21
+
+L2 Distances:
+  Average (all, norm):    0.205309
+  Average (success, norm): 0.000000
+
+Confidence Margins:
+  Average (all):     +42.455
+  Average (success): +0.000
+✓ Cleared checkpoint (run completed)
+
+Step 4: MERGE - Combining frozen + RAM results
+
+======================================================================
+Merging Results: Lock (Frozen) + Ram (New)
+======================================================================
+
+Merge Summary:
+  Frozen (SUCCESS from API): 79 images
+  RAM (new attack): 21 images
+  Missing (using original): 0 images
+  Total: 100 images
+
+✓ Saved merged submission to: output/submission_ram_v2.npz
+
+======================================================================
+LOCK & RAM V2 COMPLETE!
+======================================================================
+
+Output saved to: output/submission_ram_v2.npz
+
+Next steps:
+1. Review results: python analyze.py output/submission_ram_v2.npz --mode local
+2. Submit to API: python submit.py output/submission_ram_v2.npz --action submit
+
+==================================================================
+Job completed: Sun Nov 23 10:35:16 AM CET 2025
+Exit code: 0
+==================================================================
+
+✓ Lock & Ram V2 strategy completed successfully!
+
+==================================================================
+SUBMISSION INSTRUCTIONS
+==================================================================
+
+1. Review results locally (fast):
+   python analyze.py output/submission_ram_v2.npz --mode local
+
+2. Test transfer with API (wait 15 min after last query if needed):
+   python analyze.py output/submission_ram_v2.npz --mode api
+
+3. Submit to leaderboard (wait 5 min after last submission if needed):
+   python submit.py output/submission_ram_v2.npz --action submit
+
+4. Check leaderboard:
+   http://34.122.51.94:80/leaderboard_page
+
+==================================================================
+NOTE: API rate limits:
+  - Logits query: 1 every 15 minutes
+  - Submission: 1 every 5 minutes
+==================================================================

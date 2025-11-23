@@ -1,0 +1,93 @@
+==================================================================
+LOCK & RAM Strategy V2: Multi-GPU Parallelized
+==================================================================
+Job ID: 14245694
+Node: jrc0223
+Started: Sun Nov 23 09:59:44 AM CET 2025
+GPUs: 2 (parallelized)
+Expected duration: ~30-40 minutes for ~28 failed images
+==================================================================
+
+=== GPU Information ===
+index, name, memory.total [MiB], driver_version
+0, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+1, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+2, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+3, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission: output/submission_ram_test.npz
+✓ Found API logits JSON: logs/api/logits_submission_ram_test_20251123_095414.json
+======================================================================
+Lock & Ram Solver V2 - Multi-GPU Initialization
+======================================================================
+GPUs: 2
+GPU 0: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+GPU 1: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY V2
+======================================================================
+
+Step 1: LOCK - Loading previous submission
+  File: output/submission_ram_test.npz
+
+Loading previous submission: output/submission_ram_test.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: LOCK - Identifying SUCCESS/FAILED from API results
+  API logits JSON: logs/api/logits_submission_ram_test_20251123_095414.json
+
+Identifying SUCCESS/FAILED from API results: logs/api/logits_submission_ram_test_20251123_095414.json
+✓ Identified from API results:
+  SUCCESS (misclassified): 79 images
+  FAILED (correctly classified): 21 images
+
+✓ Locked 79 SUCCESS images (will be frozen)
+✓ Targeting 21 FAILED images for RAM attack
+
+Step 3: RAM - Multi-GPU parallelized attack on API failures
+
+======================================================================
+RAM ATTACK V2: Multi-GPU Parallelized Attack on API Failures
+======================================================================
+
+Configuration:
+  Target images: 21 (from API failures)
+  GPUs: 2
+  Epsilon (fixed): 10.0
+  Kappa: 50.0
+  PGD steps: 250
+  Restarts: 10
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Binary Search: DISABLED (fixed epsilon)
+  Remaining to process: 21 images
+  GPU 0: 10 images
+  GPU 1: 11 images
+  ✓ ResNet50
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+
+==================================================================
+Job completed: Sun Nov 23 09:59:58 AM CET 2025
+Exit code: 1
+==================================================================
+
+❌ Lock & Ram V2 strategy failed with exit code 1
+Check logs/slurm_14245694.err for details

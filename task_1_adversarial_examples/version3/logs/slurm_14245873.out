@@ -1,0 +1,875 @@
+==================================================================
+LOCK & RAM Strategy V4: Adaptive Epsilon per Image
+==================================================================
+Job ID: 14245873
+Node: jrc0255
+Started: Sun Nov 23 11:30:21 AM CET 2025
+GPUs: 2 (parallelized)
+Expected duration: ~20-30 minutes
+==================================================================
+
+=== GPU Information ===
+index, name, memory.total [MiB], driver_version
+0, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+1, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+2, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+3, NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission: output/submission_ram_v3.npz
+✓ Found analysis JSON: logs/analysis_api_20251123_110807.json
+======================================================================
+Lock & Ram Solver V4 - Adaptive Epsilon Initialization
+======================================================================
+GPUs: 2
+GPU 0: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+GPU 1: NVIDIA A100-SXM4-40GB
+  Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY V4: Adaptive Epsilon (ALL Images)
+======================================================================
+
+Step 1: Loading previous submission
+  File: output/submission_ram_v3.npz
+
+Loading previous submission: output/submission_ram_v3.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: ADAPTIVE EPSILON - Computing per-image epsilon
+  Analysis JSON: logs/analysis_api_20251123_110807.json
+
+Computing adaptive epsilons from: logs/analysis_api_20251123_110807.json
+
+Adaptive Epsilon Mapping:
+ ID |  L2 Norm |  Status |  Old Eps |  New Eps |   Change
+----------------------------------------------------------------------
+  0 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+  1 |   0.1644 | SUCCESS |      N/A |      6.0 |      new
+  2 |   0.1627 | SUCCESS |      N/A |      6.0 |      new
+  3 |   0.1630 | SUCCESS |      N/A |      6.0 |      new
+  4 |   0.1623 | SUCCESS |      N/A |      6.0 |      new
+  5 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+  6 |   0.4760 | SUCCESS |      N/A |     20.0 |      new
+  7 |   0.4701 | SUCCESS |      N/A |     20.0 |      new
+  8 |   0.1624 | SUCCESS |      N/A |      6.0 |      new
+  9 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 10 |   0.1638 | SUCCESS |      N/A |      6.0 |      new
+ 11 |   0.1640 | SUCCESS |      N/A |      6.0 |      new
+ 12 |   0.2055 | SUCCESS |      N/A |      8.0 |      new
+ 13 |   0.0643 | SUCCESS |      N/A |      0.8 |      new
+ 14 |   0.1650 | SUCCESS |      N/A |      6.0 |      new
+ 15 |   0.2055 | SUCCESS |      N/A |      8.0 |      new
+ 16 |   0.1635 | SUCCESS |      N/A |      6.0 |      new
+ 17 |   0.4676 | SUCCESS |      N/A |     20.0 |      new
+ 18 |   0.1649 | SUCCESS |      N/A |      6.0 |      new
+ 19 |   0.1621 | SUCCESS |      N/A |      6.0 |      new
+ 20 |   0.1650 | SUCCESS |      N/A |      6.0 |      new
+ 21 |   0.0635 | SUCCESS |      N/A |      0.8 |      new
+ 22 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 23 |   0.4611 | SUCCESS |      N/A |     20.0 |      new
+ 24 |   0.1640 | SUCCESS |      N/A |      6.0 |      new
+ 25 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 26 |   0.4650 | SUCCESS |      N/A |     20.0 |      new
+ 27 |   0.4645 | SUCCESS |      N/A |     20.0 |      new
+ 28 |   0.1650 | SUCCESS |      N/A |      6.0 |      new
+ 29 |   0.4858 | SUCCESS |      N/A |     20.0 |      new
+ 30 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 31 |   0.1646 | SUCCESS |      N/A |      6.0 |      new
+ 32 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 33 |   0.4679 | SUCCESS |      N/A |     20.0 |      new
+ 34 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 35 |   0.1635 | SUCCESS |      N/A |      6.0 |      new
+ 36 |   0.2037 | SUCCESS |      N/A |      8.0 |      new
+ 37 |   0.1613 | SUCCESS |      N/A |      6.0 |      new
+ 38 |   0.4596 | SUCCESS |      N/A |     20.0 |      new
+ 39 |   0.1646 | SUCCESS |      N/A |      6.0 |      new
+ 40 |   0.1650 | SUCCESS |      N/A |      6.0 |      new
+ 41 |   0.0641 | SUCCESS |      N/A |      0.8 |      new
+ 42 |   0.1644 | SUCCESS |      N/A |      6.0 |      new
+ 43 |   0.1617 | SUCCESS |      N/A |      6.0 |      new
+ 44 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 45 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 46 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 47 |   0.1618 | SUCCESS |      N/A |      6.0 |      new
+ 48 |   0.1650 | SUCCESS |      N/A |      6.0 |      new
+ 49 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 50 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 51 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 52 |   0.1618 | SUCCESS |      N/A |      6.0 |      new
+ 53 |   0.1643 | SUCCESS |      N/A |      6.0 |      new
+ 54 |   0.1641 | SUCCESS |      N/A |      6.0 |      new
+ 55 |   0.1649 | SUCCESS |      N/A |      6.0 |      new
+ 56 |   0.4664 | SUCCESS |      N/A |     20.0 |      new
+ 57 |   0.1629 | SUCCESS |      N/A |      6.0 |      new
+ 58 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 59 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 60 |   0.0642 | SUCCESS |      N/A |      0.8 |      new
+ 61 |   0.1634 | SUCCESS |      N/A |      6.0 |      new
+ 62 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 63 |   0.1630 | SUCCESS |      N/A |      6.0 |      new
+ 64 |   0.1640 | SUCCESS |      N/A |      6.0 |      new
+ 65 |   0.1593 | SUCCESS |      N/A |      6.0 |      new
+ 66 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 67 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 68 |   0.1597 | SUCCESS |      N/A |      6.0 |      new
+ 69 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 70 |   0.1650 | SUCCESS |      N/A |      6.0 |      new
+ 71 |   0.4730 | SUCCESS |      N/A |     20.0 |      new
+ 72 |   0.4692 | SUCCESS |      N/A |     20.0 |      new
+ 73 |   0.4752 | SUCCESS |      N/A |     20.0 |      new
+ 74 |   0.1637 | SUCCESS |      N/A |      6.0 |      new
+ 75 |   0.1647 | SUCCESS |      N/A |      6.0 |      new
+ 76 |   0.1628 | SUCCESS |      N/A |      6.0 |      new
+ 77 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 78 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 79 |   0.0643 | SUCCESS |      N/A |      0.8 |      new
+ 80 |   0.1578 | SUCCESS |      N/A |      6.0 |      new
+ 81 |   0.1611 | SUCCESS |      N/A |      6.0 |      new
+ 82 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 83 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 84 |   0.1610 | SUCCESS |      N/A |      6.0 |      new
+ 85 |   0.1621 | SUCCESS |      N/A |      6.0 |      new
+ 86 |   0.1637 | SUCCESS |      N/A |      6.0 |      new
+ 87 |   0.4742 | SUCCESS |      N/A |     20.0 |      new
+ 88 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 89 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 90 |   0.4722 | SUCCESS |      N/A |     20.0 |      new
+ 91 |   0.1642 | SUCCESS |      N/A |      6.0 |      new
+ 92 |   0.1641 | SUCCESS |      N/A |      6.0 |      new
+ 93 |   0.4668 | SUCCESS |      N/A |     20.0 |      new
+ 94 |   0.4684 | SUCCESS |      N/A |     20.0 |      new
+ 95 |   0.0644 | SUCCESS |      N/A |      0.8 |      new
+ 96 |   0.1605 | SUCCESS |      N/A |      6.0 |      new
+ 97 |   0.1650 | SUCCESS |      N/A |      6.0 |      new
+ 98 |   0.4645 | SUCCESS |      N/A |     20.0 |      new
+ 99 |   0.1637 | SUCCESS |      N/A |      6.0 |      new
+----------------------------------------------------------------------
+
+Epsilon Distribution:
+  Epsilon 0.8: 32 images
+  Epsilon 6: 47 images
+  Epsilon 8: 3 images
+  Epsilon 20: 18 images
+
+✓ Saved epsilon mapping to: logs/lock_and_ram_v4_epsilon_mapping.json
+
+✓ Targeting ALL 100 images for L2 optimization
+
+Step 3: RAM - Multi-GPU parallelized attack with adaptive epsilon (ALL images)
+
+======================================================================
+RAM ATTACK V4: Adaptive Epsilon per Image (ALL Images)
+======================================================================
+
+Configuration:
+  Target images: 100 (ALL images for L2 optimization)
+  GPUs: 2
+  Epsilon: Adaptive per image (see mapping above)
+  Kappa: 50.0
+  PGD steps: 80
+  Restarts: 5
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Remaining to process: 100 images
+  GPU 0: 50 images
+  GPU 1: 50 images
+  ✓ ResNet50
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+[GPU 0] Worker started - 50 images
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+[GPU 1] Worker started - 50 images
+[GPU 0] Image ID   0: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +23.26
+[GPU 1] Image ID  50: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +23.90
+
+💾 Progress: 2/100 images processed
+
+💾 Progress: 2/100 images processed
+
+💾 Progress: 2/100 images processed
+
+💾 Progress: 2/100 images processed
+
+💾 Progress: 2/100 images processed
+
+💾 Progress: 2/100 images processed
+[GPU 0] Image ID   1: ✗ FAILED | Eps: 6.0 | L2: 5.9969 (norm: 0.1237) | Margin: +28.35
+[GPU 1] Image ID  51: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +23.27
+
+💾 Progress: 4/100 images processed
+
+💾 Progress: 4/100 images processed
+
+💾 Progress: 4/100 images processed
+
+💾 Progress: 4/100 images processed
+
+💾 Progress: 4/100 images processed
+
+💾 Progress: 4/100 images processed
+[GPU 0] Image ID   2: ✗ FAILED | Eps: 6.0 | L2: 5.9844 (norm: 0.1234) | Margin: +29.07
+[GPU 1] Image ID  52: ✗ FAILED | Eps: 6.0 | L2: 5.9518 (norm: 0.1227) | Margin: +29.74
+
+💾 Progress: 6/100 images processed
+
+💾 Progress: 6/100 images processed
+
+💾 Progress: 6/100 images processed
+
+💾 Progress: 6/100 images processed
+
+💾 Progress: 6/100 images processed
+
+💾 Progress: 6/100 images processed
+[GPU 0] Image ID   3: ✗ FAILED | Eps: 6.0 | L2: 5.9929 (norm: 0.1236) | Margin: +25.84
+[GPU 1] Image ID  53: ✗ FAILED | Eps: 6.0 | L2: 5.9840 (norm: 0.1234) | Margin: +27.40
+
+💾 Progress: 8/100 images processed
+
+💾 Progress: 8/100 images processed
+
+💾 Progress: 8/100 images processed
+
+💾 Progress: 8/100 images processed
+
+💾 Progress: 8/100 images processed
+
+💾 Progress: 8/100 images processed
+[GPU 0] Image ID   4: ✗ FAILED | Eps: 6.0 | L2: 5.9432 (norm: 0.1225) | Margin: +27.10
+
+💾 Progress: 9/100 images processed
+[GPU 1] Image ID  54: ✗ FAILED | Eps: 6.0 | L2: 5.9954 (norm: 0.1236) | Margin: +25.28
+
+💾 Progress: 10/100 images processed
+
+💾 Progress: 10/100 images processed
+
+💾 Progress: 10/100 images processed
+
+💾 Progress: 10/100 images processed
+
+💾 Progress: 10/100 images processed
+
+💾 Progress: 10/100 images processed
+[GPU 0] Image ID   5: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +26.26
+[GPU 1] Image ID  55: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +25.21
+
+💾 Progress: 12/100 images processed
+
+💾 Progress: 12/100 images processed
+
+💾 Progress: 12/100 images processed
+
+💾 Progress: 12/100 images processed
+
+💾 Progress: 12/100 images processed
+
+💾 Progress: 12/100 images processed
+[GPU 0] Image ID   6: ✗ FAILED | Eps: 20.0 | L2: 18.6497 (norm: 0.3845) | Margin: +26.72
+[GPU 1] Image ID  56: ✗ FAILED | Eps: 20.0 | L2: 18.7679 (norm: 0.3870) | Margin: +29.92
+
+💾 Progress: 14/100 images processed
+
+💾 Progress: 14/100 images processed
+
+💾 Progress: 14/100 images processed
+
+💾 Progress: 14/100 images processed
+
+💾 Progress: 14/100 images processed
+
+💾 Progress: 14/100 images processed
+[GPU 0] Image ID   7: ✗ FAILED | Eps: 20.0 | L2: 18.6985 (norm: 0.3856) | Margin: +25.34
+[GPU 1] Image ID  57: ✗ FAILED | Eps: 6.0 | L2: 5.9949 (norm: 0.1236) | Margin: +28.69
+
+💾 Progress: 16/100 images processed
+
+💾 Progress: 16/100 images processed
+
+💾 Progress: 16/100 images processed
+
+💾 Progress: 16/100 images processed
+
+💾 Progress: 16/100 images processed
+
+💾 Progress: 16/100 images processed
+[GPU 0] Image ID   8: ✗ FAILED | Eps: 6.0 | L2: 5.9162 (norm: 0.1220) | Margin: +26.60
+[GPU 1] Image ID  58: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +36.27
+
+💾 Progress: 18/100 images processed
+
+💾 Progress: 18/100 images processed
+
+💾 Progress: 18/100 images processed
+
+💾 Progress: 18/100 images processed
+
+💾 Progress: 18/100 images processed
+
+💾 Progress: 18/100 images processed
+[GPU 0] Image ID   9: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +23.67
+[GPU 1] Image ID  59: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +23.54
+
+💾 Progress: 20/100 images processed
+
+💾 Progress: 20/100 images processed
+
+💾 Progress: 20/100 images processed
+
+💾 Progress: 20/100 images processed
+
+💾 Progress: 20/100 images processed
+
+💾 Progress: 20/100 images processed
+[GPU 0] Image ID  10: ✗ FAILED | Eps: 6.0 | L2: 5.9956 (norm: 0.1236) | Margin: +25.76
+[GPU 1] Image ID  60: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +26.97
+
+💾 Progress: 22/100 images processed
+
+💾 Progress: 22/100 images processed
+
+💾 Progress: 22/100 images processed
+
+💾 Progress: 22/100 images processed
+
+💾 Progress: 22/100 images processed
+
+💾 Progress: 22/100 images processed
+[GPU 0] Image ID  11: ✗ FAILED | Eps: 6.0 | L2: 5.9760 (norm: 0.1232) | Margin: +28.87
+[GPU 1] Image ID  61: ✗ FAILED | Eps: 6.0 | L2: 5.9947 (norm: 0.1236) | Margin: +28.67
+
+💾 Progress: 24/100 images processed
+
+💾 Progress: 24/100 images processed
+
+💾 Progress: 24/100 images processed
+
+💾 Progress: 24/100 images processed
+
+💾 Progress: 24/100 images processed
+
+💾 Progress: 24/100 images processed
+[GPU 0] Image ID  12: ✗ FAILED | Eps: 8.0 | L2: 7.9815 (norm: 0.1646) | Margin: +28.67
+[GPU 1] Image ID  62: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +22.64
+
+💾 Progress: 26/100 images processed
+
+💾 Progress: 26/100 images processed
+
+💾 Progress: 26/100 images processed
+
+💾 Progress: 26/100 images processed
+
+💾 Progress: 26/100 images processed
+
+💾 Progress: 26/100 images processed
+[GPU 0] Image ID  13: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +24.62
+[GPU 1] Image ID  63: ✗ FAILED | Eps: 6.0 | L2: 5.9944 (norm: 0.1236) | Margin: +27.39
+
+💾 Progress: 28/100 images processed
+
+💾 Progress: 28/100 images processed
+
+💾 Progress: 28/100 images processed
+
+💾 Progress: 28/100 images processed
+
+💾 Progress: 28/100 images processed
+
+💾 Progress: 28/100 images processed
+[GPU 0] Image ID  14: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +24.90
+[GPU 1] Image ID  64: ✗ FAILED | Eps: 6.0 | L2: 5.9892 (norm: 0.1235) | Margin: +28.81
+
+💾 Progress: 30/100 images processed
+
+💾 Progress: 30/100 images processed
+
+💾 Progress: 30/100 images processed
+
+💾 Progress: 30/100 images processed
+
+💾 Progress: 30/100 images processed
+
+💾 Progress: 30/100 images processed
+[GPU 0] Image ID  15: ✗ FAILED | Eps: 8.0 | L2: 7.9953 (norm: 0.1649) | Margin: +25.73
+[GPU 1] Image ID  65: ✗ FAILED | Eps: 6.0 | L2: 5.8539 (norm: 0.1207) | Margin: +27.36
+
+💾 Progress: 32/100 images processed
+
+💾 Progress: 32/100 images processed
+
+💾 Progress: 32/100 images processed
+
+💾 Progress: 32/100 images processed
+
+💾 Progress: 32/100 images processed
+
+💾 Progress: 32/100 images processed
+[GPU 0] Image ID  16: ✗ FAILED | Eps: 6.0 | L2: 5.9795 (norm: 0.1233) | Margin: +28.56
+[GPU 1] Image ID  66: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +21.07
+
+💾 Progress: 34/100 images processed
+
+💾 Progress: 34/100 images processed
+
+💾 Progress: 34/100 images processed
+
+💾 Progress: 34/100 images processed
+
+💾 Progress: 34/100 images processed
+
+💾 Progress: 34/100 images processed
+[GPU 0] Image ID  17: ✗ FAILED | Eps: 20.0 | L2: 18.8085 (norm: 0.3878) | Margin: +25.07
+[GPU 1] Image ID  67: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +25.13
+
+💾 Progress: 36/100 images processed
+
+💾 Progress: 36/100 images processed
+
+💾 Progress: 36/100 images processed
+
+💾 Progress: 36/100 images processed
+
+💾 Progress: 36/100 images processed
+
+💾 Progress: 36/100 images processed
+[GPU 0] Image ID  18: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +28.85
+[GPU 1] Image ID  68: ✗ FAILED | Eps: 6.0 | L2: 5.9405 (norm: 0.1225) | Margin: +28.07
+
+💾 Progress: 38/100 images processed
+
+💾 Progress: 38/100 images processed
+
+💾 Progress: 38/100 images processed
+
+💾 Progress: 38/100 images processed
+
+💾 Progress: 38/100 images processed
+
+💾 Progress: 38/100 images processed
+[GPU 0] Image ID  19: ✗ FAILED | Eps: 6.0 | L2: 5.9138 (norm: 0.1219) | Margin: +31.12
+[GPU 1] Image ID  69: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +27.73
+
+💾 Progress: 40/100 images processed
+
+💾 Progress: 40/100 images processed
+
+💾 Progress: 40/100 images processed
+
+💾 Progress: 40/100 images processed
+
+💾 Progress: 40/100 images processed
+
+💾 Progress: 40/100 images processed
+[GPU 0] Image ID  20: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +27.34
+[GPU 1] Image ID  70: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +25.52
+
+💾 Progress: 42/100 images processed
+
+💾 Progress: 42/100 images processed
+
+💾 Progress: 42/100 images processed
+
+💾 Progress: 42/100 images processed
+
+💾 Progress: 42/100 images processed
+
+💾 Progress: 42/100 images processed
+[GPU 0] Image ID  21: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +20.08
+[GPU 1] Image ID  71: ✗ FAILED | Eps: 20.0 | L2: 18.5885 (norm: 0.3833) | Margin: +25.71
+
+💾 Progress: 44/100 images processed
+
+💾 Progress: 44/100 images processed
+
+💾 Progress: 44/100 images processed
+
+💾 Progress: 44/100 images processed
+
+💾 Progress: 44/100 images processed
+
+💾 Progress: 44/100 images processed
+[GPU 0] Image ID  22: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +19.77
+[GPU 1] Image ID  72: ✗ FAILED | Eps: 20.0 | L2: 18.7496 (norm: 0.3866) | Margin: +31.00
+
+💾 Progress: 46/100 images processed
+
+💾 Progress: 46/100 images processed
+
+💾 Progress: 46/100 images processed
+
+💾 Progress: 46/100 images processed
+
+💾 Progress: 46/100 images processed
+
+💾 Progress: 46/100 images processed
+[GPU 0] Image ID  23: ✗ FAILED | Eps: 20.0 | L2: 18.8812 (norm: 0.3893) | Margin: +35.26
+[GPU 1] Image ID  73: ✗ FAILED | Eps: 20.0 | L2: 18.7772 (norm: 0.3872) | Margin: +33.84
+
+💾 Progress: 48/100 images processed
+
+💾 Progress: 48/100 images processed
+
+💾 Progress: 48/100 images processed
+
+💾 Progress: 48/100 images processed
+
+💾 Progress: 48/100 images processed
+
+💾 Progress: 48/100 images processed
+[GPU 0] Image ID  24: ✗ FAILED | Eps: 6.0 | L2: 5.9720 (norm: 0.1231) | Margin: +28.02
+[GPU 1] Image ID  74: ✗ FAILED | Eps: 6.0 | L2: 5.9680 (norm: 0.1231) | Margin: +31.17
+
+💾 Progress: 50/100 images processed
+
+💾 Progress: 50/100 images processed
+
+💾 Progress: 50/100 images processed
+
+💾 Progress: 50/100 images processed
+
+💾 Progress: 50/100 images processed
+
+💾 Progress: 50/100 images processed
+[GPU 0] Image ID  25: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +21.02
+[GPU 1] Image ID  75: ✗ FAILED | Eps: 6.0 | L2: 5.9984 (norm: 0.1237) | Margin: +30.58
+
+💾 Progress: 52/100 images processed
+
+💾 Progress: 52/100 images processed
+
+💾 Progress: 52/100 images processed
+
+💾 Progress: 52/100 images processed
+
+💾 Progress: 52/100 images processed
+
+💾 Progress: 52/100 images processed
+[GPU 0] Image ID  26: ✗ FAILED | Eps: 20.0 | L2: 18.5462 (norm: 0.3824) | Margin: +25.24
+[GPU 1] Image ID  76: ✗ FAILED | Eps: 6.0 | L2: 5.9672 (norm: 0.1230) | Margin: +27.08
+
+💾 Progress: 54/100 images processed
+
+💾 Progress: 54/100 images processed
+
+💾 Progress: 54/100 images processed
+
+💾 Progress: 54/100 images processed
+
+💾 Progress: 54/100 images processed
+
+💾 Progress: 54/100 images processed
+[GPU 0] Image ID  27: ✗ FAILED | Eps: 20.0 | L2: 18.9537 (norm: 0.3908) | Margin: +25.57
+[GPU 1] Image ID  77: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +25.90
+
+💾 Progress: 56/100 images processed
+
+💾 Progress: 56/100 images processed
+
+💾 Progress: 56/100 images processed
+
+💾 Progress: 56/100 images processed
+
+💾 Progress: 56/100 images processed
+
+💾 Progress: 56/100 images processed
+[GPU 0] Image ID  28: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +23.03
+[GPU 1] Image ID  78: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +23.44
+
+💾 Progress: 58/100 images processed
+
+💾 Progress: 58/100 images processed
+
+💾 Progress: 58/100 images processed
+
+💾 Progress: 58/100 images processed
+
+💾 Progress: 58/100 images processed
+
+💾 Progress: 58/100 images processed
+[GPU 0] Image ID  29: ✗ FAILED | Eps: 20.0 | L2: 18.5591 (norm: 0.3827) | Margin: +25.16
+[GPU 1] Image ID  79: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +27.52
+
+💾 Progress: 60/100 images processed
+
+💾 Progress: 60/100 images processed
+
+💾 Progress: 60/100 images processed
+
+💾 Progress: 60/100 images processed
+
+💾 Progress: 60/100 images processed
+
+💾 Progress: 60/100 images processed
+[GPU 0] Image ID  30: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +25.45
+[GPU 1] Image ID  80: ✗ FAILED | Eps: 6.0 | L2: 5.6424 (norm: 0.1163) | Margin: +23.45
+
+💾 Progress: 62/100 images processed
+
+💾 Progress: 62/100 images processed
+
+💾 Progress: 62/100 images processed
+
+💾 Progress: 62/100 images processed
+
+💾 Progress: 62/100 images processed
+
+💾 Progress: 62/100 images processed
+[GPU 0] Image ID  31: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +24.82
+[GPU 1] Image ID  81: ✗ FAILED | Eps: 6.0 | L2: 5.9688 (norm: 0.1231) | Margin: +28.60
+
+💾 Progress: 64/100 images processed
+
+💾 Progress: 64/100 images processed
+
+💾 Progress: 64/100 images processed
+
+💾 Progress: 64/100 images processed
+
+💾 Progress: 64/100 images processed
+
+💾 Progress: 64/100 images processed
+[GPU 0] Image ID  32: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +21.14
+[GPU 1] Image ID  82: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +29.08
+
+💾 Progress: 66/100 images processed
+
+💾 Progress: 66/100 images processed
+
+💾 Progress: 66/100 images processed
+
+💾 Progress: 66/100 images processed
+
+💾 Progress: 66/100 images processed
+
+💾 Progress: 66/100 images processed
+[GPU 0] Image ID  33: ✗ FAILED | Eps: 20.0 | L2: 18.7742 (norm: 0.3871) | Margin: +26.08
+[GPU 1] Image ID  83: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +30.17
+
+💾 Progress: 68/100 images processed
+
+💾 Progress: 68/100 images processed
+
+💾 Progress: 68/100 images processed
+
+💾 Progress: 68/100 images processed
+
+💾 Progress: 68/100 images processed
+
+💾 Progress: 68/100 images processed
+[GPU 0] Image ID  34: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +32.78
+[GPU 1] Image ID  84: ✗ FAILED | Eps: 6.0 | L2: 5.8568 (norm: 0.1208) | Margin: +22.03
+
+💾 Progress: 70/100 images processed
+
+💾 Progress: 70/100 images processed
+
+💾 Progress: 70/100 images processed
+
+💾 Progress: 70/100 images processed
+
+💾 Progress: 70/100 images processed
+
+💾 Progress: 70/100 images processed
+[GPU 0] Image ID  35: ✗ FAILED | Eps: 6.0 | L2: 5.9473 (norm: 0.1226) | Margin: +29.93
+[GPU 1] Image ID  85: ✗ FAILED | Eps: 6.0 | L2: 5.9032 (norm: 0.1217) | Margin: +31.23
+
+💾 Progress: 72/100 images processed
+
+💾 Progress: 72/100 images processed
+
+💾 Progress: 72/100 images processed
+
+💾 Progress: 72/100 images processed
+
+💾 Progress: 72/100 images processed
+
+💾 Progress: 72/100 images processed
+[GPU 0] Image ID  36: ✗ FAILED | Eps: 8.0 | L2: 7.9052 (norm: 0.1630) | Margin: +24.89
+[GPU 1] Image ID  86: ✗ FAILED | Eps: 6.0 | L2: 5.9971 (norm: 0.1237) | Margin: +25.20
+
+💾 Progress: 74/100 images processed
+
+💾 Progress: 74/100 images processed
+
+💾 Progress: 74/100 images processed
+
+💾 Progress: 74/100 images processed
+
+💾 Progress: 74/100 images processed
+
+💾 Progress: 74/100 images processed
+
+💾 Progress: 74/100 images processed
+[GPU 0] Image ID  37: ✗ FAILED | Eps: 6.0 | L2: 5.9692 (norm: 0.1231) | Margin: +30.41
+[GPU 1] Image ID  87: ✗ FAILED | Eps: 20.0 | L2: 18.7456 (norm: 0.3865) | Margin: +26.88
+
+💾 Progress: 76/100 images processed
+
+💾 Progress: 76/100 images processed
+
+💾 Progress: 76/100 images processed
+
+💾 Progress: 76/100 images processed
+
+💾 Progress: 76/100 images processed
+
+💾 Progress: 76/100 images processed
+[GPU 0] Image ID  38: ✗ FAILED | Eps: 20.0 | L2: 18.8193 (norm: 0.3880) | Margin: +27.15
+[GPU 1] Image ID  88: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +22.62
+
+💾 Progress: 78/100 images processed
+
+💾 Progress: 78/100 images processed
+
+💾 Progress: 78/100 images processed
+
+💾 Progress: 78/100 images processed
+
+💾 Progress: 78/100 images processed
+
+💾 Progress: 78/100 images processed
+[GPU 0] Image ID  39: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +28.38
+[GPU 1] Image ID  89: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +19.84
+
+💾 Progress: 80/100 images processed
+
+💾 Progress: 80/100 images processed
+
+💾 Progress: 80/100 images processed
+
+💾 Progress: 80/100 images processed
+
+💾 Progress: 80/100 images processed
+
+💾 Progress: 80/100 images processed
+[GPU 0] Image ID  40: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +24.21
+[GPU 1] Image ID  90: ✗ FAILED | Eps: 20.0 | L2: 18.7192 (norm: 0.3860) | Margin: +25.36
+
+💾 Progress: 82/100 images processed
+
+💾 Progress: 82/100 images processed
+
+💾 Progress: 82/100 images processed
+
+💾 Progress: 82/100 images processed
+
+💾 Progress: 82/100 images processed
+
+💾 Progress: 82/100 images processed
+[GPU 0] Image ID  41: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +27.13
+[GPU 1] Image ID  91: ✗ FAILED | Eps: 6.0 | L2: 5.9865 (norm: 0.1234) | Margin: +27.82
+
+💾 Progress: 84/100 images processed
+
+💾 Progress: 84/100 images processed
+
+💾 Progress: 84/100 images processed
+
+💾 Progress: 84/100 images processed
+
+💾 Progress: 84/100 images processed
+
+💾 Progress: 84/100 images processed
+[GPU 0] Image ID  42: ✗ FAILED | Eps: 6.0 | L2: 5.9957 (norm: 0.1236) | Margin: +25.00
+[GPU 1] Image ID  92: ✗ FAILED | Eps: 6.0 | L2: 5.9979 (norm: 0.1237) | Margin: +28.88
+
+💾 Progress: 86/100 images processed
+
+💾 Progress: 86/100 images processed
+
+💾 Progress: 86/100 images processed
+
+💾 Progress: 86/100 images processed
+
+💾 Progress: 86/100 images processed
+
+💾 Progress: 86/100 images processed
+[GPU 0] Image ID  43: ✗ FAILED | Eps: 6.0 | L2: 5.9113 (norm: 0.1219) | Margin: +29.71
+[GPU 1] Image ID  93: ✗ FAILED | Eps: 20.0 | L2: 18.7058 (norm: 0.3857) | Margin: +25.65
+
+💾 Progress: 88/100 images processed
+
+💾 Progress: 88/100 images processed
+
+💾 Progress: 88/100 images processed
+
+💾 Progress: 88/100 images processed
+
+💾 Progress: 88/100 images processed
+
+💾 Progress: 88/100 images processed
+[GPU 0] Image ID  44: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +29.30
+[GPU 1] Image ID  94: ✗ FAILED | Eps: 20.0 | L2: 18.9033 (norm: 0.3898) | Margin: +31.73
+
+💾 Progress: 90/100 images processed
+
+💾 Progress: 90/100 images processed
+
+💾 Progress: 90/100 images processed
+
+💾 Progress: 90/100 images processed
+
+💾 Progress: 90/100 images processed
+
+💾 Progress: 90/100 images processed
+[GPU 0] Image ID  45: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +20.40
+[GPU 1] Image ID  95: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +18.80
+
+💾 Progress: 92/100 images processed
+
+💾 Progress: 92/100 images processed
+
+💾 Progress: 92/100 images processed
+
+💾 Progress: 92/100 images processed
+
+💾 Progress: 92/100 images processed
+
+💾 Progress: 92/100 images processed
+[GPU 0] Image ID  46: ✗ FAILED | Eps: 0.8 | L2: 0.8000 (norm: 0.0165) | Margin: +21.36
+[GPU 1] Image ID  96: ✗ FAILED | Eps: 6.0 | L2: 5.9468 (norm: 0.1226) | Margin: +27.75
+
+💾 Progress: 94/100 images processed
+
+💾 Progress: 94/100 images processed
+
+💾 Progress: 94/100 images processed
+
+💾 Progress: 94/100 images processed
+
+💾 Progress: 94/100 images processed
+
+💾 Progress: 94/100 images processed
+[GPU 0] Image ID  47: ✗ FAILED | Eps: 6.0 | L2: 5.9779 (norm: 0.1233) | Margin: +30.02
+[GPU 1] Image ID  97: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +24.87
+
+💾 Progress: 96/100 images processed
+
+💾 Progress: 96/100 images processed
+
+💾 Progress: 96/100 images processed
+
+💾 Progress: 96/100 images processed
+
+💾 Progress: 96/100 images processed
+
+💾 Progress: 96/100 images processed
+[GPU 0] Image ID  48: ✗ FAILED | Eps: 6.0 | L2: 6.0000 (norm: 0.1237) | Margin: +25.44
+[GPU 1] Image ID  98: ✗ FAILED | Eps: 20.0 | L2: 18.9543 (norm: 0.3908) | Margin: +26.65
+
+💾 Progress: 98/100 images processed

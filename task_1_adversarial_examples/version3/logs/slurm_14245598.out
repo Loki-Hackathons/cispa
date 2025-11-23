@@ -1,0 +1,413 @@
+==================================================================
+LOCK & RAM Strategy: Freeze & Boost
+==================================================================
+Job ID: 14245598
+Node: jrc0223
+Started: Sun Nov 23 08:56:31 AM CET 2025
+Expected duration: ~10-15 minutes (68 images only, no BS)
+==================================================================
+
+=== GPU Information ===
+name, memory.total [MiB], driver_version
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+NVIDIA A100-SXM4-40GB, 40960 MiB, 580.95.05
+
+✓ Found previous submission: output/submission_fast.npz
+✓ Found logits JSON: logs/api/logits_submission_fast_20251123_024816.json
+======================================================================
+Lock & Ram Solver Initialization
+======================================================================
+Device: cuda
+GPU: NVIDIA A100-SXM4-40GB
+GPU Memory: 42.41 GB
+
+Loading dataset: ../natural_images.pt
+✓ Loaded 100 images
+  Shape: torch.Size([100, 3, 28, 28])
+  Labels: torch.Size([100])
+
+Initializing Hybrid Ensemble (fast_mode=True)...
+  ✓ ResNet50
+  ✓ DenseNet121
+✓ Loaded 2 ImageNet models + 0 CIFAR models
+  Total ensemble size: 2
+======================================================================
+
+======================================================================
+LOCK & RAM STRATEGY
+======================================================================
+
+Step 1: LOCK - Loading previous submission
+  File: output/submission_fast.npz
+
+Loading previous submission: output/submission_fast.npz
+✓ Loaded 100 adversarial images
+  Shape: (100, 3, 28, 28)
+  Image IDs: (100,)
+
+Step 2: LOCK - Identifying SUCCESS/FAILED images
+
+Identifying SUCCESS/FAILED from: logs/api/logits_submission_fast_20251123_024816.json
+✓ Identified:
+  SUCCESS: 32 images
+  FAILED:  68 images
+
+✓ Locked 32 SUCCESS images (will be frozen)
+✓ Targeting 68 FAILED images for RAM attack
+
+Step 3: RAM - Aggressive attack on failed images
+  Note: Results are saved to checkpoint after each image.
+  Press Ctrl+C to interrupt and create partial submission.
+
+======================================================================
+RAM ATTACK: Aggressive Attack on Failed Images
+======================================================================
+
+Configuration:
+  Target images: 68
+  Epsilon (fixed): 8.0
+  Kappa: 30.0
+  PGD steps: 150
+  Restarts: 5
+  Alpha factor: 2.5
+  Momentum: 0.9
+  Input Diversity: ENABLED
+  Binary Search: DISABLED (fixed epsilon)
+✓ Loaded 1 results from checkpoint
+
+[  1/67] RAM Attack on Image ID   2 (Label:   7)
+  💾 Checkpoint saved (image 2)
+  ✓ SUCCESS
+  L2: 7.8928 (norm: 0.1627) | ε: 8.000 | Margin: +30.50 | Time: 48.6s
+
+[  2/67] RAM Attack on Image ID   3 (Label:   5)
+  💾 Checkpoint saved (image 3)
+  ✓ SUCCESS
+  L2: 7.9067 (norm: 0.1630) | ε: 8.000 | Margin: +30.10 | Time: 47.9s
+
+[  3/67] RAM Attack on Image ID   4 (Label:   5)
+  💾 Checkpoint saved (image 4)
+  ✗ FAILED
+  L2: 7.8705 (norm: 0.1623) | ε: 8.000 | Margin: +29.57 | Time: 47.8s
+
+[  4/67] RAM Attack on Image ID   6 (Label:   3)
+  💾 Checkpoint saved (image 6)
+  ✓ SUCCESS
+  L2: 7.9702 (norm: 0.1643) | ε: 8.000 | Margin: +32.98 | Time: 47.8s
+
+[  5/67] RAM Attack on Image ID   7 (Label:   3)
+  💾 Checkpoint saved (image 7)
+  ✓ SUCCESS
+  L2: 7.9821 (norm: 0.1646) | ε: 8.000 | Margin: +31.83 | Time: 47.8s
+
+[  6/67] RAM Attack on Image ID   8 (Label:   5)
+  💾 Checkpoint saved (image 8)
+  ✓ SUCCESS
+  L2: 7.8774 (norm: 0.1624) | ε: 8.000 | Margin: +31.51 | Time: 47.8s
+
+[  7/67] RAM Attack on Image ID  10 (Label:   5)
+  💾 Checkpoint saved (image 10)
+  ✗ FAILED
+  L2: 7.9445 (norm: 0.1638) | ε: 8.000 | Margin: +29.37 | Time: 47.8s
+
+[  8/67] RAM Attack on Image ID  11 (Label:   8)
+  💾 Checkpoint saved (image 11)
+  ✓ SUCCESS
+  L2: 7.9519 (norm: 0.1640) | ε: 8.000 | Margin: +30.14 | Time: 47.9s
+
+[  9/67] RAM Attack on Image ID  12 (Label:   2)
+  💾 Checkpoint saved (image 12)
+  ✓ SUCCESS
+  L2: 7.9780 (norm: 0.1645) | ε: 8.000 | Margin: +30.56 | Time: 47.9s
+
+[ 10/67] RAM Attack on Image ID  14 (Label:   1)
+  💾 Checkpoint saved (image 14)
+  ✗ FAILED
+  L2: 8.0000 (norm: 0.1650) | ε: 8.000 | Margin: +29.96 | Time: 47.9s
+
+  Progress: 10/67 | Elapsed: 8.0min | Remaining: ~45.5min
+
+[ 11/67] RAM Attack on Image ID  15 (Label:   5)
+  💾 Checkpoint saved (image 15)
+  ✓ SUCCESS
+  L2: 7.9948 (norm: 0.1649) | ε: 8.000 | Margin: +30.29 | Time: 47.8s
+
+[ 12/67] RAM Attack on Image ID  16 (Label:   4)
+  💾 Checkpoint saved (image 16)
+  ✓ SUCCESS
+  L2: 7.9289 (norm: 0.1635) | ε: 8.000 | Margin: +30.32 | Time: 47.8s
+
+[ 13/67] RAM Attack on Image ID  17 (Label:   3)
+  💾 Checkpoint saved (image 17)
+  ✓ SUCCESS
+  L2: 7.9813 (norm: 0.1646) | ε: 8.000 | Margin: +34.67 | Time: 47.8s
+
+[ 14/67] RAM Attack on Image ID  18 (Label:   2)
+  💾 Checkpoint saved (image 18)
+  ✓ SUCCESS
+  L2: 7.9969 (norm: 0.1649) | ε: 8.000 | Margin: +30.54 | Time: 47.8s
+
+[ 15/67] RAM Attack on Image ID  19 (Label:   8)
+  💾 Checkpoint saved (image 19)
+  ✓ SUCCESS
+  L2: 7.8627 (norm: 0.1621) | ε: 8.000 | Margin: +30.15 | Time: 47.8s
+
+[ 16/67] RAM Attack on Image ID  20 (Label:   2)
+  💾 Checkpoint saved (image 20)
+  ✓ SUCCESS
+  L2: 7.9998 (norm: 0.1650) | ε: 8.000 | Margin: +30.53 | Time: 47.9s
+
+[ 17/67] RAM Attack on Image ID  23 (Label:   3)
+  💾 Checkpoint saved (image 23)
+  ✓ SUCCESS
+  L2: 7.9941 (norm: 0.1648) | ε: 8.000 | Margin: +32.75 | Time: 47.9s
+
+[ 18/67] RAM Attack on Image ID  24 (Label:   8)
+  💾 Checkpoint saved (image 24)
+  ✓ SUCCESS
+  L2: 7.9543 (norm: 0.1640) | ε: 8.000 | Margin: +31.04 | Time: 47.9s
+
+[ 19/67] RAM Attack on Image ID  26 (Label:   3)
+  💾 Checkpoint saved (image 26)
+  ✓ SUCCESS
+  L2: 7.9797 (norm: 0.1645) | ε: 8.000 | Margin: +31.50 | Time: 47.9s
+
+[ 20/67] RAM Attack on Image ID  27 (Label:   3)
+  💾 Checkpoint saved (image 27)
+  ✓ SUCCESS
+  L2: 7.9949 (norm: 0.1649) | ε: 8.000 | Margin: +33.20 | Time: 47.9s
+
+  Progress: 20/67 | Elapsed: 16.0min | Remaining: ~37.5min
+
+[ 21/67] RAM Attack on Image ID  28 (Label:   1)
+  💾 Checkpoint saved (image 28)
+  ✓ SUCCESS
+  L2: 7.9997 (norm: 0.1650) | ε: 8.000 | Margin: +30.01 | Time: 47.9s
+
+[ 22/67] RAM Attack on Image ID  29 (Label:   3)
+  💾 Checkpoint saved (image 29)
+  ✓ SUCCESS
+  L2: 7.9346 (norm: 0.1636) | ε: 8.000 | Margin: +30.64 | Time: 47.8s
+
+[ 23/67] RAM Attack on Image ID  31 (Label:   1)
+  💾 Checkpoint saved (image 31)
+  ✗ FAILED
+  L2: 7.9807 (norm: 0.1646) | ε: 8.000 | Margin: +29.56 | Time: 47.8s
+
+[ 24/67] RAM Attack on Image ID  33 (Label:   3)
+  💾 Checkpoint saved (image 33)
+  ✓ SUCCESS
+  L2: 7.9816 (norm: 0.1646) | ε: 8.000 | Margin: +33.18 | Time: 47.7s
+
+[ 25/67] RAM Attack on Image ID  35 (Label:   8)
+  💾 Checkpoint saved (image 35)
+  ✓ SUCCESS
+  L2: 7.9290 (norm: 0.1635) | ε: 8.000 | Margin: +30.21 | Time: 47.6s
+
+[ 26/67] RAM Attack on Image ID  36 (Label:   5)
+  💾 Checkpoint saved (image 36)
+  ✓ SUCCESS
+  L2: 7.9218 (norm: 0.1633) | ε: 8.000 | Margin: +30.51 | Time: 47.6s
+
+[ 27/67] RAM Attack on Image ID  37 (Label:   4)
+  💾 Checkpoint saved (image 37)
+  ✓ SUCCESS
+  L2: 7.8220 (norm: 0.1613) | ε: 8.000 | Margin: +30.89 | Time: 47.5s
+
+[ 28/67] RAM Attack on Image ID  38 (Label:   3)
+  💾 Checkpoint saved (image 38)
+  ✓ SUCCESS
+  L2: 7.9869 (norm: 0.1647) | ε: 8.000 | Margin: +33.91 | Time: 47.3s
+
+[ 29/67] RAM Attack on Image ID  39 (Label:   7)
+  💾 Checkpoint saved (image 39)
+  ✓ SUCCESS
+  L2: 7.9846 (norm: 0.1646) | ε: 8.000 | Margin: +31.49 | Time: 47.2s
+
+[ 30/67] RAM Attack on Image ID  40 (Label:   1)
+  💾 Checkpoint saved (image 40)
+  ✓ SUCCESS
+  L2: 8.0000 (norm: 0.1650) | ε: 8.000 | Margin: +30.30 | Time: 47.2s
+
+  Progress: 30/67 | Elapsed: 23.9min | Remaining: ~29.5min
+
+[ 31/67] RAM Attack on Image ID  42 (Label:   5)
+  💾 Checkpoint saved (image 42)
+  ✓ SUCCESS
+  L2: 7.9741 (norm: 0.1644) | ε: 8.000 | Margin: +30.77 | Time: 47.3s
+
+[ 32/67] RAM Attack on Image ID  43 (Label:   6)
+  💾 Checkpoint saved (image 43)
+  ✓ SUCCESS
+  L2: 7.8427 (norm: 0.1617) | ε: 8.000 | Margin: +31.43 | Time: 47.3s
+
+[ 33/67] RAM Attack on Image ID  47 (Label:   0)
+  💾 Checkpoint saved (image 47)
+  ✓ SUCCESS
+  L2: 7.8466 (norm: 0.1618) | ε: 8.000 | Margin: +31.19 | Time: 47.3s
+
+[ 34/67] RAM Attack on Image ID  48 (Label:   1)
+  💾 Checkpoint saved (image 48)
+  ✗ FAILED
+  L2: 8.0000 (norm: 0.1650) | ε: 8.000 | Margin: +28.31 | Time: 47.2s
+
+[ 35/67] RAM Attack on Image ID  52 (Label:   4)
+  💾 Checkpoint saved (image 52)
+  ✓ SUCCESS
+  L2: 7.8468 (norm: 0.1618) | ε: 8.000 | Margin: +30.24 | Time: 47.2s
+
+[ 36/67] RAM Attack on Image ID  53 (Label:   6)
+  💾 Checkpoint saved (image 53)
+  ✓ SUCCESS
+  L2: 7.9696 (norm: 0.1643) | ε: 8.000 | Margin: +30.07 | Time: 47.3s
+
+[ 37/67] RAM Attack on Image ID  54 (Label:   5)
+  💾 Checkpoint saved (image 54)
+  ✗ FAILED
+  L2: 7.9598 (norm: 0.1641) | ε: 8.000 | Margin: +29.14 | Time: 47.3s
+
+[ 38/67] RAM Attack on Image ID  55 (Label:   1)
+  💾 Checkpoint saved (image 55)
+  ✗ FAILED
+  L2: 7.9994 (norm: 0.1649) | ε: 8.000 | Margin: +29.90 | Time: 47.2s
+
+[ 39/67] RAM Attack on Image ID  56 (Label:   3)
+  💾 Checkpoint saved (image 56)
+  ✓ SUCCESS
+  L2: 7.9952 (norm: 0.1649) | ε: 8.000 | Margin: +30.60 | Time: 47.2s
+
+[ 40/67] RAM Attack on Image ID  57 (Label:   4)
+  💾 Checkpoint saved (image 57)
+  ✓ SUCCESS
+  L2: 7.9009 (norm: 0.1629) | ε: 8.000 | Margin: +31.84 | Time: 47.2s
+
+  Progress: 40/67 | Elapsed: 31.8min | Remaining: ~21.4min
+
+[ 41/67] RAM Attack on Image ID  61 (Label:   7)
+  💾 Checkpoint saved (image 61)
+  ✓ SUCCESS
+  L2: 7.9260 (norm: 0.1634) | ε: 8.000 | Margin: +30.82 | Time: 47.2s
+
+[ 42/67] RAM Attack on Image ID  63 (Label:   5)
+  💾 Checkpoint saved (image 63)
+  ✓ SUCCESS
+  L2: 7.9053 (norm: 0.1630) | ε: 8.000 | Margin: +30.70 | Time: 47.4s
+
+[ 43/67] RAM Attack on Image ID  64 (Label:   6)
+  💾 Checkpoint saved (image 64)
+  ✓ SUCCESS
+  L2: 7.9545 (norm: 0.1640) | ε: 8.000 | Margin: +31.08 | Time: 47.3s
+
+[ 44/67] RAM Attack on Image ID  65 (Label:   6)
+  💾 Checkpoint saved (image 65)
+  ✗ FAILED
+  L2: 7.7250 (norm: 0.1593) | ε: 8.000 | Margin: +29.70 | Time: 47.3s
+
+[ 45/67] RAM Attack on Image ID  68 (Label:   0)
+  💾 Checkpoint saved (image 68)
+  ✓ SUCCESS
+  L2: 7.7436 (norm: 0.1597) | ε: 8.000 | Margin: +30.34 | Time: 47.2s
+
+[ 46/67] RAM Attack on Image ID  70 (Label:   1)
+  💾 Checkpoint saved (image 70)
+  ✓ SUCCESS
+  L2: 8.0000 (norm: 0.1650) | ε: 8.000 | Margin: +31.21 | Time: 47.2s
+
+[ 47/67] RAM Attack on Image ID  71 (Label:   3)
+  💾 Checkpoint saved (image 71)
+  ✓ SUCCESS
+  L2: 7.9570 (norm: 0.1641) | ε: 8.000 | Margin: +33.04 | Time: 47.2s
+
+[ 48/67] RAM Attack on Image ID  72 (Label:   3)
+  💾 Checkpoint saved (image 72)
+  ✓ SUCCESS
+  L2: 7.9745 (norm: 0.1644) | ε: 8.000 | Margin: +31.13 | Time: 47.2s
+
+[ 49/67] RAM Attack on Image ID  73 (Label:   3)
+  💾 Checkpoint saved (image 73)
+  ✓ SUCCESS
+  L2: 7.9670 (norm: 0.1643) | ε: 8.000 | Margin: +30.49 | Time: 47.3s
+
+[ 50/67] RAM Attack on Image ID  74 (Label:   8)
+  💾 Checkpoint saved (image 74)
+  ✓ SUCCESS
+  L2: 7.9386 (norm: 0.1637) | ε: 8.000 | Margin: +30.56 | Time: 47.3s
+
+  Progress: 50/67 | Elapsed: 39.6min | Remaining: ~13.5min
+
+[ 51/67] RAM Attack on Image ID  75 (Label:   7)
+  💾 Checkpoint saved (image 75)
+  ✓ SUCCESS
+  L2: 7.9856 (norm: 0.1647) | ε: 8.000 | Margin: +30.28 | Time: 47.3s
+
+[ 52/67] RAM Attack on Image ID  76 (Label:   5)
+  💾 Checkpoint saved (image 76)
+  ✓ SUCCESS
+  L2: 7.8969 (norm: 0.1628) | ε: 8.000 | Margin: +30.24 | Time: 47.3s
+
+[ 53/67] RAM Attack on Image ID  80 (Label:   5)
+  💾 Checkpoint saved (image 80)
+  ✗ FAILED
+  L2: 7.6525 (norm: 0.1578) | ε: 8.000 | Margin: +22.24 | Time: 47.3s
+
+[ 54/67] RAM Attack on Image ID  81 (Label:   4)
+  💾 Checkpoint saved (image 81)
+  ✓ SUCCESS
+  L2: 7.8130 (norm: 0.1611) | ε: 8.000 | Margin: +31.87 | Time: 47.3s
+
+[ 55/67] RAM Attack on Image ID  84 (Label:   5)
+  💾 Checkpoint saved (image 84)
+  ✗ FAILED
+  L2: 7.8077 (norm: 0.1610) | ε: 8.000 | Margin: +28.44 | Time: 47.3s
+
+[ 56/67] RAM Attack on Image ID  85 (Label:   8)
+  💾 Checkpoint saved (image 85)
+  ✓ SUCCESS
+  L2: 7.8619 (norm: 0.1621) | ε: 8.000 | Margin: +31.99 | Time: 47.2s
+
+[ 57/67] RAM Attack on Image ID  86 (Label:   5)
+  💾 Checkpoint saved (image 86)
+  ✗ FAILED
+  L2: 7.9377 (norm: 0.1637) | ε: 8.000 | Margin: +28.53 | Time: 47.3s
+
+[ 58/67] RAM Attack on Image ID  87 (Label:   3)
+  💾 Checkpoint saved (image 87)
+  ✓ SUCCESS
+  L2: 7.9755 (norm: 0.1645) | ε: 8.000 | Margin: +31.07 | Time: 47.2s
+
+[ 59/67] RAM Attack on Image ID  90 (Label:   3)
+  💾 Checkpoint saved (image 90)
+  ✓ SUCCESS
+  L2: 7.9871 (norm: 0.1647) | ε: 8.000 | Margin: +30.36 | Time: 47.2s
+
+[ 60/67] RAM Attack on Image ID  91 (Label:   6)
+  💾 Checkpoint saved (image 91)
+  ✓ SUCCESS
+  L2: 7.9641 (norm: 0.1642) | ε: 8.000 | Margin: +30.83 | Time: 47.2s
+
+  Progress: 60/67 | Elapsed: 47.5min | Remaining: ~5.5min
+
+[ 61/67] RAM Attack on Image ID  92 (Label:   4)
+  💾 Checkpoint saved (image 92)
+  ✓ SUCCESS
+  L2: 7.9591 (norm: 0.1641) | ε: 8.000 | Margin: +31.15 | Time: 47.3s
+
+[ 62/67] RAM Attack on Image ID  93 (Label:   3)
+  💾 Checkpoint saved (image 93)
+  ✓ SUCCESS
+  L2: 7.9889 (norm: 0.1647) | ε: 8.000 | Margin: +31.61 | Time: 47.3s
+
+[ 63/67] RAM Attack on Image ID  94 (Label:   3)
+  💾 Checkpoint saved (image 94)
+  ✓ SUCCESS
+  L2: 7.9880 (norm: 0.1647) | ε: 8.000 | Margin: +31.75 | Time: 47.3s
+
+[ 64/67] RAM Attack on Image ID  96 (Label:   4)
+
+
+⚠ Interruption signal received. Saving checkpoint...
+
+
+⚠ Interruption signal received. Saving checkpoint...
